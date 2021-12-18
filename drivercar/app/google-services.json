@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "412490796648",
+    "firebase_url": "https://logivan-334609-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "logivan-334609",
+    "storage_bucket": "logivan-334609.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412490796648:android:8658c1d5213dc93554b5dd",
+        "android_client_info": {
+          "package_name": "com.example.bookingcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi6Vr4WK1qkQA9zAJ8O-tFEvXjGTXif-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412490796648:android:14627da190fb9fc454b5dd",
+        "android_client_info": {
+          "package_name": "com.example.drivercar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412490796648-7lmrpfcea9dm48ci48i4am3fni26j023.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drivercar",
+            "certificate_hash": "4b4d6b3c3323b955f727b4ab670e26148c124a54"
+          }
+        },
+        {
+          "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi6Vr4WK1qkQA9zAJ8O-tFEvXjGTXif-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

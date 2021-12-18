@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "412490796648",
+    "firebase_url": "https://logivan-334609-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "logivan-334609",
+    "storage_bucket": "logivan-334609.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412490796648:android:8658c1d5213dc93554b5dd",
+        "android_client_info": {
+          "package_name": "com.example.bookingcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi6Vr4WK1qkQA9zAJ8O-tFEvXjGTXif-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
