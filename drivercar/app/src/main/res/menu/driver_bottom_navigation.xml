@@ -1,26 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <item
-        android:id="@+id/chefHome"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Trang chủ" />
-
-
-    <item
-        android:id="@+id/chefPendingOrders"
-        android:icon="@drawable/ic_pending_orders_24"
-        android:title="Cấp phát đơn đặt hàng" />
-
-
-    <item
-        android:id="@+id/chef_Orders"
+        android:id="@+id/driver_Order"
         android:icon="@drawable/ic_orders_24"
         android:title="Đơn hàng" />
 
 
     <item
-        android:id="@+id/chef_Profile"
-        android:icon="@drawable/ic_post_dish_menu_24"
-        android:title="Thông tin cá nhân" />
+        android:id="@+id/driver_my_seft"
+        android:icon="@drawable/ic_magic_box"
+        android:title="Của tôi" />
+
+
+    <item
+        android:id="@+id/driver_notification"
+        android:icon="@drawable/ic_notification"
+        android:title="Thông báo" />
+
+
+    <item
+        android:id="@+id/driver_Profile"
+        android:icon="@drawable/ic_account"
+        android:title="Tài khoản" />
 
 </menu>

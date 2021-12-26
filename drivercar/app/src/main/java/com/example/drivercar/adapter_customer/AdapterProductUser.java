@@ -20,8 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.example.drivercar.R;
 import com.example.drivercar.FilterProductUser.FilterProductUser;
-import com.example.drivercar.activity.DriverDetalsActivity;
-import com.example.drivercar.model.ModelProduct;
+import com.example.drivercar.model.ModelDriver;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,12 +32,12 @@ import p32929.androideasysql_library.EasyDB;
 public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.HolderProductUser> implements Filterable {
 
     private Context context;
-    public ArrayList<ModelProduct> productsList, filterList;
+    public ArrayList<ModelDriver> driverList, filterList;
     private FilterProductUser filter;
 
-    public AdapterProductUser(Context context, ArrayList<ModelProduct> productsList) {
+    public AdapterProductUser(Context context, ArrayList<ModelDriver> productsList) {
         this.context = context;
-        this.productsList = productsList;
+        this.driverList = productsList;
         this.filterList = productsList;
     }
 
@@ -53,48 +52,48 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
     @Override
     public void onBindViewHolder(@NonNull HolderProductUser holder, int position) {
         //get data
-        ModelProduct modelProduct = productsList.get(position);
-        String discountAvailable = modelProduct.getDiscountAvailable();
-        String discountNote= modelProduct.getDiscountNote();
-        String discountPrice= modelProduct.getDiscountPrice();
-        String productCategory = modelProduct.getProductCategory();
-        String originalPrice = modelProduct.getOriginalPrice();
-        String productDesciptions = modelProduct.getProductDesciptions();
-        String productTitle = modelProduct.getProductTitle();
-        String productQuanlity = modelProduct.getProductQuanlity();
-        String productId = modelProduct.getProductId();
-        String timestamp = modelProduct.getTimestamp();
-        String productIcon = modelProduct.getProductIcon();
+        ModelDriver modelDriver = driverList.get(position);
+//        String discountAvailable = modelDriver.getDiscountAvailable();
+//        String discountNote= modelDriver.getDiscountNote();
+//        String discountPrice= modelDriver.getDiscountPrice();
+//        String productCategory = modelDriver.getProductCategory();
+//        String originalPrice = modelDriver.getOriginalPrice();
+//        String productDesciptions = modelDriver.getProductDesciptions();
+//        String productTitle = modelDriver.getProductTitle();
+//        String productQuanlity = modelDriver.getProductQuanlity();
+//        String productId = modelDriver.getProductId();
+//        String timestamp = modelDriver.getTimestamp();
+//        String productIcon = modelDriver.getProductIcon();
 
         //set data
-        holder.titleTv.setText(productTitle);
-        holder.discountNoteTv.setText(discountNote);
-        holder.descriptionTv.setText(productDesciptions);
-        holder.originalPriceTv.setText("đ"+originalPrice);
-        holder.discountPriceTv.setText("đ"+discountPrice );
-        if(discountAvailable.equals("true")){
-            //product is on discount
-            holder.discountPriceTv.setVisibility(View.VISIBLE);
-            holder.discountNoteTv.setVisibility(View.VISIBLE);
-            holder.originalPriceTv.setPaintFlags(holder.originalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }else {
-            //product is not on discount
-            holder.discountPriceTv.setVisibility(View.GONE);
-            holder.discountNoteTv.setVisibility(View.GONE);
-            holder.originalPriceTv.setPaintFlags(0);
-        }
-        try{
-            Picasso.get().load(productIcon).placeholder(R.drawable.ic_add).into(holder.productIconIv);
-        }catch (Exception e){
-            holder.productIconIv.setImageResource(R.drawable.ic_add);
-            Toasty.error(context, "This is an error toast.\n"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
-        }
+//        holder.titleTv.setText(productTitle);
+//        holder.discountNoteTv.setText(discountNote);
+//        holder.descriptionTv.setText(productDesciptions);
+//        holder.originalPriceTv.setText("đ"+originalPrice);
+//        holder.discountPriceTv.setText("đ"+discountPrice );
+//        if(discountAvailable.equals("true")){
+//            //product is on discount
+//            holder.discountPriceTv.setVisibility(View.VISIBLE);
+//            holder.discountNoteTv.setVisibility(View.VISIBLE);
+//            holder.originalPriceTv.setPaintFlags(holder.originalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//        }else {
+//            //product is not on discount
+//            holder.discountPriceTv.setVisibility(View.GONE);
+//            holder.discountNoteTv.setVisibility(View.GONE);
+//            holder.originalPriceTv.setPaintFlags(0);
+//        }
+//        try{
+//            Picasso.get().load(productIcon).placeholder(R.drawable.ic_add).into(holder.productIconIv);
+//        }catch (Exception e){
+//            holder.productIconIv.setImageResource(R.drawable.ic_add);
+//            Toasty.error(context, "This is an error toast.\n"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
+//        }
 
         holder.addToCartTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //show product to cart
-                showQuantityDialog(modelProduct);
+                showQuantityDialog(modelDriver);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -109,113 +108,113 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
     private double cost = 0;
     private double finalCost = 0;
     private int quantity = 0;
-    private void showQuantityDialog(ModelProduct modelProduct) {
+    private void showQuantityDialog(ModelDriver modelDriver) {
         //inflate layout for dialog
         View view  = LayoutInflater.from(context).inflate(R.layout.dialog_quantity,null);
         //init layout views
-        CircularImageView productIv  =view.findViewById(R.id.productIv);
-        TextView titleTv = view.findViewById(R.id.titleTv);
-        TextView pQuantityTv = view.findViewById(R.id.pQuantityTv);
-        TextView descriptionTv = view.findViewById(R.id.descriptionTv);
-        TextView discountNoteTv = view.findViewById(R.id.discountNoteTv);
-        TextView originalPriceTv = view.findViewById(R.id.originalPriceTv);
-        TextView priceDiscountedTv = view.findViewById(R.id.priceDiscountedTv);
-        TextView finalPriceTv = view.findViewById(R.id.finalPriceTv);
-        ImageButton decrementBtn = view.findViewById(R.id.decrementBtn);
-        TextView quantilyTv = view.findViewById(R.id.quantilyTv);
-        ImageButton incrementBtn = view.findViewById(R.id.incrementBtn);
-        Button continueBtn = view.findViewById(R.id.continueBtn);
+//        CircularImageView productIv  =view.findViewById(R.id.productIv);
+//        TextView titleTv = view.findViewById(R.id.titleTv);
+//        TextView pQuantityTv = view.findViewById(R.id.pQuantityTv);
+//        TextView descriptionTv = view.findViewById(R.id.descriptionTv);
+//        TextView discountNoteTv = view.findViewById(R.id.discountNoteTv);
+//        TextView originalPriceTv = view.findViewById(R.id.originalPriceTv);
+//        TextView priceDiscountedTv = view.findViewById(R.id.priceDiscountedTv);
+//        TextView finalPriceTv = view.findViewById(R.id.finalPriceTv);
+//        ImageButton decrementBtn = view.findViewById(R.id.decrementBtn);
+//        TextView quantilyTv = view.findViewById(R.id.quantilyTv);
+//        ImageButton incrementBtn = view.findViewById(R.id.incrementBtn);
+//        Button continueBtn = view.findViewById(R.id.continueBtn);
 
         //get data from model
-        String productID = modelProduct.getProductId();
-        String title = modelProduct.getProductTitle();
-        String productQuantity = modelProduct.getProductQuanlity();
-        String description = modelProduct.getProductDesciptions();
-        String discountNote = modelProduct.getDiscountNote();
-        String image = modelProduct.getProductIcon();
+//        String productID = modelDriver.getProductId();
+//        String title = modelDriver.getProductTitle();
+//        String productQuantity = modelDriver.getProductQuanlity();
+//        String description = modelDriver.getProductDesciptions();
+//        String discountNote = modelDriver.getDiscountNote();
+//        String image = modelDriver.getProductIcon();
 
         final String price;
-        if(modelProduct.getDiscountAvailable().equals("true")){
-            //product have discount
-            price = modelProduct.getDiscountPrice();
-            discountNoteTv.setVisibility(View.VISIBLE);
-            originalPriceTv.setPaintFlags(originalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//        if(modelProduct.getDiscountAvailable().equals("true")){
+//            //product have discount
+//            price = modelProduct.getDiscountPrice();
+//            discountNoteTv.setVisibility(View.VISIBLE);
+//            originalPriceTv.setPaintFlags(originalPriceTv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//
+//        }else {
+//            //product don't have discount
+//            discountNoteTv.setVisibility(View.GONE);
+//            priceDiscountedTv.setVisibility(View.GONE);
+//            price = modelProduct.getOriginalPrice();
+//        }
 
-        }else {
-            //product don't have discount
-            discountNoteTv.setVisibility(View.GONE);
-            priceDiscountedTv.setVisibility(View.GONE);
-            price = modelProduct.getOriginalPrice();
-        }
-
-        cost = Double.parseDouble(price.replaceAll("đ",""));
-        finalCost = Double.parseDouble(price.replaceAll("đ",""));
-
-        quantity = 1;
+//        cost = Double.parseDouble(price.replaceAll("đ",""));
+//        finalCost = Double.parseDouble(price.replaceAll("đ",""));
+//
+//        quantity = 1;
 
         //dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(view);
 
         //set  data
-        try {
-            Picasso.get().load(image).placeholder(R.drawable.ic_shop).into(productIv);
-        }catch (Exception e){
-            Picasso.get().load(image).placeholder(R.drawable.ic_shop);
-            Toasty.error(context, ""+e.getMessage(), Toast.LENGTH_SHORT,true).show();
-        }
-
-        titleTv.setText(title);
-        pQuantityTv.setText(productQuantity);
-        descriptionTv.setText(description);
-        quantilyTv.setText(""+quantity);
-        originalPriceTv.setText("đ"+modelProduct.getOriginalPrice());
-        priceDiscountedTv.setText("đ"+modelProduct.getDiscountPrice());
-        finalPriceTv.setText("đ"+finalCost);
+//        try {
+//            Picasso.get().load(image).placeholder(R.drawable.ic_shop).into(productIv);
+//        }catch (Exception e){
+//            Picasso.get().load(image).placeholder(R.drawable.ic_shop);
+//            Toasty.error(context, ""+e.getMessage(), Toast.LENGTH_SHORT,true).show();
+//        }
+//
+//        titleTv.setText(title);
+//        pQuantityTv.setText(productQuantity);
+//        descriptionTv.setText(description);
+//        quantilyTv.setText(""+quantity);
+//        originalPriceTv.setText("đ"+modelProduct.getOriginalPrice());
+//        priceDiscountedTv.setText("đ"+modelProduct.getDiscountPrice());
+//        finalPriceTv.setText("đ"+finalCost);
 
         AlertDialog dialog = builder.create();
         dialog.show();
 
         //increase quantily of the product
-        incrementBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finalCost = finalCost + cost;
-                quantity++;
-
-                finalPriceTv.setText("đ"+finalCost);
-                quantilyTv.setText(""+quantity);
-            }
-        });
+//        incrementBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finalCost = finalCost + cost;
+//                quantity++;
+//
+//                finalPriceTv.setText("đ"+finalCost);
+//                quantilyTv.setText(""+quantity);
+//            }
+//        });
 
         //decrease quantily of the product, only if quanlity is > 1
 
-        decrementBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(quantity > 1){
-                    finalCost = finalCost - cost;
-                    quantity --;
-
-                    finalPriceTv.setText("đ"+finalCost);
-                    quantilyTv.setText(""+quantity);
-                }
-            }
-        });
-        continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String title = titleTv.getText().toString().trim();
-                String priceEach = price;
-                String totalPrice = finalPriceTv.getText().toString().trim().replace("đ","");
-                String quantity = quantilyTv.getText().toString().trim();
-
-                //add to db(SQLite)
-                addToCart(productID,title,priceEach,totalPrice,quantity);
-
-                dialog.dismiss();
-            }
-        });
+//        decrementBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(quantity > 1){
+//                    finalCost = finalCost - cost;
+//                    quantity --;
+//
+//                    finalPriceTv.setText("đ"+finalCost);
+//                    quantilyTv.setText(""+quantity);
+//                }
+//            }
+//        });
+//        continueBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String title = titleTv.getText().toString().trim();
+//                String priceEach = price;
+//                String totalPrice = finalPriceTv.getText().toString().trim().replace("đ","");
+//                String quantity = quantilyTv.getText().toString().trim();
+//
+//                //add to db(SQLite)
+//                addToCart(productID,title,priceEach,totalPrice,quantity);
+//
+//                dialog.dismiss();
+//            }
+//        });
     }
 
 
@@ -250,7 +249,7 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
 
     @Override
     public int getItemCount() {
-        return productsList.size();
+        return driverList.size();
     }
 
     @Override

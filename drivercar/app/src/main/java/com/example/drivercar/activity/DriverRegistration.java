@@ -352,8 +352,34 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                                                 public void onClick(DialogInterface dialog, int which) {
                                                                     dialog.dismiss();
                                                                     String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                                    String fname =  Fname.getEditText().getText().toString().trim();
+                                                                    String lname =  Lname.getEditText().getText().toString().trim();
+                                                                    String password =  Pass.getEditText().getText().toString().trim();
+                                                                    String confpassword = cpass.getEditText().getText().toString().trim();
+                                                                    String Area = area.getEditText().getText().toString().trim();
+                                                                    String house = houseno.getEditText().getText().toString().trim();
+                                                                    String statee = state1.getEditText().getText().toString().trim();
+                                                                    String cityy = city1.getEditText().getText().toString().trim();
+                                                                    String cpAddress = compleaddress.getEditText().getText().toString().trim();
+                                                                    String ImageURL = "";
+                                                                    String emailid = Email.getEditText().getText().toString().trim();
+
+
                                                                     Intent b = new Intent(DriverRegistration.this, DriverVerifyPhone.class);
                                                                     b.putExtra("phonenumber", phonenumber);
+                                                                    b.putExtra("fname",fname);
+                                                                    b.putExtra("lname",lname);
+                                                                    b.putExtra("password",password);
+                                                                    b.putExtra("confpassword",confpassword);
+                                                                    b.putExtra("house",house);
+                                                                    b.putExtra("statee",statee);
+                                                                    b.putExtra("cityy",cityy);
+                                                                    b.putExtra("Area",Area);
+                                                                    b.putExtra("cpAddress",cpAddress);
+                                                                    b.putExtra("ImageURL",ImageURL);
+                                                                    b.putExtra("emailid",emailid);
+                                                                    b.putExtra("latitude",""+latitude);
+                                                                    b.putExtra("longitude",""+longitude);
                                                                     startActivity(b);
                                                                 }
                                                             });
@@ -369,13 +395,7 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
 
                                             }
                                         });
-//                                        DanhMuc.child("-MiiJTfsEPcgklkpm4RV").child("mName").setValue("Bún/Phở");
-//                                        DanhMuc.child("-MiiJiqPT4X3kuXq00qa").child("mName").setValue("Ăn Vặt");
-//                                        DanhMuc.child("-MiiJrcM8xTVUua1rnII").child("mName").setValue("Đồ Uống");
-//                                        DanhMuc.child("-MiiK-b2YhzfxzfpUDyb").child("mName").setValue("Sức Khỏe");
-//                                        DanhMuc.child("-MiiK8fXXkqhjsMloVw0").child("mName").setValue("Cơm");
-//                                        DanhMuc.child("-MiiKJdrYPfuHnsYDfLU").child("mName").setValue("Đặc Sản");
-//                                        DanhMuc.child("-MiiKl8Xr0GD4N4zeSEd").child("mName").setValue("Thức ăn nhanh");
+
 
                                     }catch (Exception e){
                                         Erro();
@@ -394,10 +414,9 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                     //cập nhật ảnh lên firebase storage nếu hình ảnh không bị null
                     else if (isValid() && image_uri != null ) {
 
-                        if(!init(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude())){
-                            return;
-                        }
 
+                        latitude = mCurrentLocation.getLatitude();
+                        longitude = mCurrentLocation.getLongitude();
                         String filePathAndName = "profile_image/" + "" + FAuth.getUid();
 
                         final ProgressDialog progressDialog = new ProgressDialog(DriverRegistration.this);
@@ -445,8 +464,8 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                                             hashMap1.put("ConfirmPassword", confpassword);
                                                             hashMap1.put("House", house);//Số đường
                                                             hashMap1.put("ImageURL", "" + downloadImageUri);//url of uploadted image
-                                                            hashMap1.put("Latitude", "" + mCurrentLocation.getLatitude());
-                                                            hashMap1.put("Longitude", "" + mCurrentLocation.getLongitude());
+                                                            hashMap1.put("Latitude", "" + latitude);
+                                                            hashMap1.put("Longitude", "" + longitude);
                                                             hashMap1.put("Timestamp", "" + timestamp);//+" "+DateFormat.getTimeInstance().format(new Date())
                                                             hashMap1.put("Online", "true");
                                                             hashMap1.put("DriverOpen", "true");
@@ -476,8 +495,35 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                                                                     public void onClick(DialogInterface dialog, int which) {
                                                                                         dialog.dismiss();
                                                                                         String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                                                        String fname =  Fname.getEditText().getText().toString().trim();
+                                                                                        String lname =  Lname.getEditText().getText().toString().trim();
+                                                                                        String password =  Pass.getEditText().getText().toString().trim();
+                                                                                        String confpassword = cpass.getEditText().getText().toString().trim();
+                                                                                        String Area = area.getEditText().getText().toString().trim();
+                                                                                        String house = houseno.getEditText().getText().toString().trim();
+                                                                                        String statee = state1.getEditText().getText().toString().trim();
+                                                                                        String cityy = city1.getEditText().getText().toString().trim();
+                                                                                        String cpAddress = compleaddress.getEditText().getText().toString().trim();
+                                                                                        String ImageURL = ""+downloadImageUri;
+                                                                                        String emailid = Email.getEditText().getText().toString().trim();
+
+
+
                                                                                         Intent b = new Intent(DriverRegistration.this, DriverVerifyPhone.class);
                                                                                         b.putExtra("phonenumber", phonenumber);
+                                                                                        b.putExtra("fname",fname);
+                                                                                        b.putExtra("lname",lname);
+                                                                                        b.putExtra("password",password);
+                                                                                        b.putExtra("confpassword",confpassword);
+                                                                                        b.putExtra("house",house);
+                                                                                        b.putExtra("statee",statee);
+                                                                                        b.putExtra("cityy",cityy);
+                                                                                        b.putExtra("Area",Area);
+                                                                                        b.putExtra("cpAddress",cpAddress);
+                                                                                        b.putExtra("ImageURL",ImageURL);
+                                                                                        b.putExtra("emailid",emailid);
+                                                                                        b.putExtra("latitude",""+latitude);
+                                                                                        b.putExtra("longitude",""+longitude);
                                                                                         startActivity(b);
                                                                                     }
                                                                                 });
@@ -493,13 +539,7 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
 
                                                                 }
                                                             });
-//                                                            DanhMuc.child("-MiiJTfsEPcgklkpm4RV").child("mName").setValue("Bún/Phở");
-//                                                            DanhMuc.child("-MiiJiqPT4X3kuXq00qa").child("mName").setValue("Ăn Vặt");
-//                                                            DanhMuc.child("-MiiJrcM8xTVUua1rnII").child("mName").setValue("Đồ Uống");
-//                                                            DanhMuc.child("-MiiK-b2YhzfxzfpUDyb").child("mName").setValue("Sức Khỏe");
-//                                                            DanhMuc.child("-MiiK8fXXkqhjsMloVw0").child("mName").setValue("Cơm");
-//                                                            DanhMuc.child("-MiiKJdrYPfuHnsYDfLU").child("mName").setValue("Đặc Sản");
-//                                                            DanhMuc.child("-MiiKl8Xr0GD4N4zeSEd").child("mName").setValue("Thức ăn nhanh");
+
                                                         }catch (Exception e){
                                                             Erro();
                                                             Toasty.warning(DriverRegistration.this, "Vui lòng nhấn vào nút GPS góc phải bên trên ..."+"\n"+e.getMessage(), Toast.LENGTH_LONG, true).show();
@@ -521,8 +561,6 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         progressDialog.dismiss();
-                                        Toasty.error(DriverRegistration.this, ""+e.getMessage(), Toast.LENGTH_SHORT, true).show();
-//                                    Toast.makeText(ChefRegistration.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -836,17 +874,7 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
         }
     }
 
-//    private void getLastLocation() {
-//        try {
-//            Criteria criteria = new Criteria();
-//            String provider = locationManager.getBestProvider(criteria, false);
-//            Location location = locationManager.getLastKnownLocation(provider);
-//            Log.d(TAG, provider);
-//            Log.d(TAG, location == null ? "KHÔNG có vị trí cuối cùng" : location.toString());
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
     @NotNull
     private ArrayList findUnAskedPermissions(@NotNull ArrayList<String> wanted) {

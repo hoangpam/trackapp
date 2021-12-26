@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10sp"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/backBN"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            app:srcCompat="@drawable/ic_back"
+            android:background="@null"></ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Thông tin đơn hàng"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white">
+
+        </TextView>
+        <ProgressBar
+            android:id="@+id/simpleProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:max="100"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progress="86"/>
+        <ImageButton
+            android:id="@+id/gpsBtn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="30sp"
+            android:src="@drawable/ic_location"
+            android:background="@null"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+
+        android:text="Địa chỉ vận chuyển:"
+        android:textColor="@color/Black"
+        android:textSize="18dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NameLocation"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/NamelocationTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/bg_border"
+
+            android:drawableStart="@drawable/ic_route"
+            android:drawablePadding="10dp"
+            android:hint="Điểm lấy hàng"
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NameLoGo"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/NameLoGoTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:drawableStart="@drawable/ic_route"
+
+            android:drawablePadding="10dp"
+            android:importantForAutofill="noExcludeDescendants"
+            android:hint="Điểm giao hàng"
+            android:layout_marginLeft="30dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+
+        android:text="Thời gian bốc hàng:"
+        android:textColor="@color/Black"
+        android:textSize="18dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/RankingTime"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/RankingTimeTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:drawableEnd="@drawable/ic_calendar"
+
+            android:drawablePadding="10dp"
+            android:importantForAutofill="noExcludeDescendants"
+            android:hint="Ví dụ: 19/9/2019, 9:20"
+            android:layout_marginLeft="30dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+
+        android:text="Tên hàng và khối lượng:"
+        android:textColor="@color/Black"
+        android:textSize="18dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Product"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ProductTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+
+
+            android:drawablePadding="10dp"
+            android:importantForAutofill="noExcludeDescendants"
+            android:hint="Ví dụ: Gạo, Sắt, Thép"
+            android:layout_marginLeft="30dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Cargo"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/CargoTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border"
+            android:drawableStart="@drawable/tan"
+
+            android:drawablePadding="10dp"
+            android:importantForAutofill="noExcludeDescendants"
+            android:hint="Nhập khối lượng hàng"
+            android:layout_marginLeft="30dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+
+        android:text="Tên loại xe muốn đặt:"
+        android:textColor="@color/Black"
+        android:textSize="18dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NameCar"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/NameCarTET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/bg_border"
+            android:drawableStart="@drawable/ic_traffic_jam"
+            android:drawablePadding="10dp"
+            android:hint="Xe thùng mui bạt"
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="textCapSentences|textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/postUpBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đăng "
+        android:layout_gravity="center"
+        android:backgroundTint="@color/green"></Button>
+</LinearLayout>

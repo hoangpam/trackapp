@@ -1,53 +1,22 @@
 package com.example.drivercar.activity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.drivercar.model.ModelProduct;
-import com.example.drivercar.R;
 //import com.example.drivercar.adapter_customer.AdapterCartItem;
 import com.example.drivercar.adapter_customer.AdapterProductUser;
 //import com.example.drivercar.model.ModelCartItem;
-import com.example.drivercar.model.ModelProduct;
-import com.example.drivercar.object.Constants;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.drivercar.model.ModelDriver;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import es.dmoral.toasty.Toasty;
-import p32929.androideasysql_library.Column;
-import p32929.androideasysql_library.EasyDB;
 
 public class DriverDetalsActivity extends AppCompatActivity {
 
@@ -70,7 +39,7 @@ public class DriverDetalsActivity extends AppCompatActivity {
     //progress dialog
     private ProgressDialog progressDialog;
 
-    private ArrayList<ModelProduct> productsList;
+    private ArrayList<ModelDriver> driverList;
     private AdapterProductUser adapterProductUser;
 
     //cart

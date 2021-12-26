@@ -51,6 +51,12 @@
         tools:replace="android:theme">
         <activity android:name=".activity.Customerlogin" />
         <activity android:name=".activity.MainMenu" />
+        <activity android:name=".activity.CustomerRegistration" />
+        <activity android:name=".activity.Customerloginphone" />
+        <activity android:name=".activity.sendotp" />
+        <activity android:name=".activity.VerifyPhone" />
+        <activity android:name=".activity.DriverDetalsActivity" />
+        <activity android:name=".bottomnavigation.CustomerPanel_BottomNavigation" />
         <activity
             android:name=".activity.MainActivity"
             android:windowSoftInputMode="stateUnchanged"

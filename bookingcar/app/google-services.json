@@ -15,6 +15,67 @@
       },
       "oauth_client": [
         {
+          "client_id": "412490796648-1n9t531b4cni41l89mp4p393iiahd0a9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingcar",
+            "certificate_hash": "4b4d6b3c3323b955f727b4ab670e26148c124a54"
+          }
+        },
+        {
+          "client_id": "412490796648-le2vsa61ig1pv4db5l42jqmj8gqp0gj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingcar",
+            "certificate_hash": "eb5da38bc6b17b742d87b7bd2a06fa5ec504e949"
+          }
+        },
+        {
+          "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi6Vr4WK1qkQA9zAJ8O-tFEvXjGTXif-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412490796648:android:14627da190fb9fc454b5dd",
+        "android_client_info": {
+          "package_name": "com.example.drivercar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412490796648-7lmrpfcea9dm48ci48i4am3fni26j023.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drivercar",
+            "certificate_hash": "4b4d6b3c3323b955f727b4ab670e26148c124a54"
+          }
+        },
+        {
+          "client_id": "412490796648-jq8qagrke9cpmmdofo3ft1ejsbuel7sq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drivercar",
+            "certificate_hash": "eb5da38bc6b17b742d87b7bd2a06fa5ec504e949"
+          }
+        },
+        {
           "client_id": "412490796648-0br9t0ja2otptpd0f3brjfm28rrgu35q.apps.googleusercontent.com",
           "client_type": 3
         }

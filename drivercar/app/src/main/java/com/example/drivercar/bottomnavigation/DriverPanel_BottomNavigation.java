@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +20,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.example.drivercar.R;
 import com.example.drivercar.activity.MainMenu;
-import com.example.drivercar.driverCarPanel.ProfileEditDriver;
 import com.example.drivercar.driverCar_fagment.DriverHomeFragment;
 import com.example.drivercar.driverCar_fagment.DriverOrderFragment;
+import com.example.drivercar.driverCar_fagment.DriverPendingOrderFragment;
+import com.example.drivercar.driverCar_fagment.DriverProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +42,7 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
     Fragment fragmenthientai;
     FrameLayout layoutHost;
 
-
+    RelativeLayout relativeLayout;
     private TextView nameTv, tabProductsTv, tabOrderTv;
     private ImageButton logoutbtn;
     private ProgressDialog progressDialog;
@@ -61,17 +63,10 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
         layoutHost = findViewById(R.id.frame_container);
-        fragmenthientai = new DriverHomeFragment();
+        fragmenthientai = new DriverPendingOrderFragment();
         loadFragment(fragmenthientai);
 
-
-        nameTv = (TextView) findViewById(R.id.nameTv);
-
-
-        tabProductsTv = (TextView) findViewById(R.id.tabProductsTv);
-        tabOrderTv = (TextView) findViewById(R.id.tabOrderTv);
-
-        logoutbtn = (ImageButton) findViewById(R.id.logoutBTN);
+        relativeLayout = (RelativeLayout) findViewById(R.id.toolbarRl);
 
         profileIv = (CircularImageView) findViewById(R.id.profileIv);
 
@@ -79,60 +74,28 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
         progressDialog.setTitle("Tình hình mạng yếu");
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth = FirebaseAuth.getInstance();
-        checkUser();
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //make offline
-                //sign out
-                //go to login activity
-                makeMeOffline();
-            }
-        });
-
-
+//        checkUser();
+//        logoutbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //make offline
+//                //sign out
+//                //go to login activity
+//                makeMeOffline();
+//            }
+//        });
 
 
-        tabProductsTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load product
-                showProductUI();
-                fragmenthientai = new DriverHomeFragment();
-                loadFragment(fragmenthientai);
-            }
-        });
 
-        tabOrderTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load orders
-                showOrdersUI();
-                fragmenthientai = new DriverOrderFragment();
-                loadFragment(fragmenthientai);
-            }
-        });
+
+
 
     }
 
-    private void showProductUI() {
-        //show products ui and hide orders ui
-        tabProductsTv.setTextColor(getResources().getColor(R.color.black));
-        tabProductsTv.setBackgroundResource(R.drawable.shape_rect04);
 
-        tabOrderTv.setTextColor(getResources().getColor(R.color.white));
-        tabOrderTv.setBackgroundResource(R.drawable.shape_rect03);
-    }
 
-    private void showOrdersUI() {
-        //show orders ui and hide products ui
-        tabProductsTv.setTextColor(getResources().getColor(R.color.white));
-        tabProductsTv.setBackgroundResource(R.drawable.shape_rect03);
 
-        tabOrderTv.setTextColor(getResources().getColor(R.color.black));
-        tabOrderTv.setBackgroundResource(R.drawable.shape_rect04);
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -140,22 +103,18 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment = null;
             switch (item.getItemId()){
-                case R.id.chefHome :
-                    fragment=new DriverHomeFragment();
-                    break;
-                case R.id.tabProductsTv :
-                    fragment=new DriverHomeFragment();
-                    break;
-                case R.id.chefPendingOrders:
+                case R.id.driver_Order :
                     fragment=new DriverPendingOrderFragment();
                     break;
-                case R.id.chef_Orders :
+
+                case R.id.driver_my_seft:
+                    fragment=new DriverHomeFragment();
+                    break;
+                case R.id.driver_notification :
                     fragment=new DriverOrderFragment();
                     break;
-                case R.id.tabOrderTv:
-                    fragment=new DriverOrderFragment();
-                    break;
-                case R.id.chef_Profile:
+
+                case R.id.driver_Profile:
                     fragment=new DriverProfileFragment();
                     break;
             }
@@ -202,22 +161,15 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
                         for(DataSnapshot ds: snapshot.getChildren()){
                             String fname =""+ds.child("FirstName").getValue();
                             String name = ""+ds.child("LastName").getValue();
-                            String nameshop = ""+ds.child("NameShop").getValue();
+
                             String email = ""+ ds.child("EmailId").getValue();
                             String profile = ""+ds.child("ImageURL").getValue();
 
-                            nameTv.setText(""+fname+" "+name);
 
 
 
-                            try {
-                                Picasso.get().load(profile).placeholder(R.drawable.ic_camera_24).into(profileIv);
-                            }catch (Exception e)
-                            {
-                                profileIv.setImageResource(R.drawable.ic_camera_24);
-//                                Toasty.error(ChefFoodPanel_BottomNavigation.this, ""+e.getMessage(), Toast.LENGTH_SHORT, true).show();
 
-                            }
+
                         }
                     }
 
@@ -228,33 +180,6 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
                 });
     }
 
-    private void makeMeOffline()
-    {
-        //after logging in make user online
-        progressDialog.setMessage("Đang đang xuất khỏi hệ thống...");
-        progressDialog.show();
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("Online","false");
 
-
-        //update value to db
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.child(firebaseAuth.getUid()).updateChildren(hashMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        firebaseAuth.signOut();
-                        progressDialog.dismiss();
-                        checkUser();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(DriverPanel_BottomNavigation.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 
 }

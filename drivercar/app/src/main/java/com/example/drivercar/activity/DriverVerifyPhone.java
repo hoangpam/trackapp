@@ -32,7 +32,8 @@ public class DriverVerifyPhone extends AppCompatActivity {
     Button verify , Resend ;
     TextView txt;
     PinView entercode;
-    String phoneno;
+    String phoneno,fname,lname,password,confpassword,house,statee,cityy,Area,cpAddress,ImageURL,emailid,longitude,latitude;
+
 
 
     @Override
@@ -41,6 +42,19 @@ public class DriverVerifyPhone extends AppCompatActivity {
         setContentView(R.layout.activity_driver_verify_phone);
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
+        fname = getIntent().getStringExtra("fname").trim();
+        lname = getIntent().getStringExtra("lname").trim();
+        password = getIntent().getStringExtra("password").trim();
+        house = getIntent().getStringExtra("house").trim();
+        confpassword = getIntent().getStringExtra("confpassword").trim();
+        statee = getIntent().getStringExtra("statee").trim();
+        cityy = getIntent().getStringExtra("cityy").trim();
+        Area = getIntent().getStringExtra("Area").trim();
+        cpAddress = getIntent().getStringExtra("cpAddress").trim();
+        ImageURL = getIntent().getStringExtra("ImageURL").trim();
+        emailid = getIntent().getStringExtra("emailid").trim();
+        latitude = getIntent().getStringExtra("latitude").trim();
+        longitude = getIntent().getStringExtra("longitude").trim();
 
         entercode = (PinView) findViewById(R.id.code);
         txt = (TextView) findViewById(R.id.text);
@@ -194,7 +208,37 @@ public class DriverVerifyPhone extends AppCompatActivity {
 
                         if(task.isSuccessful()){
 
-                            Intent intent = new Intent(DriverVerifyPhone.this , MainMenu.class);
+                            phoneno = getIntent().getStringExtra("phonenumber").trim();
+                            fname = getIntent().getStringExtra("fname").trim();
+                            lname = getIntent().getStringExtra("lname").trim();
+                            password = getIntent().getStringExtra("password").trim();
+                            house = getIntent().getStringExtra("house").trim();
+                            confpassword = getIntent().getStringExtra("confpassword").trim();
+                            statee = getIntent().getStringExtra("statee").trim();
+                            cityy = getIntent().getStringExtra("cityy").trim();
+                            Area = getIntent().getStringExtra("Area").trim();
+                            cpAddress = getIntent().getStringExtra("cpAddress").trim();
+                            ImageURL = getIntent().getStringExtra("ImageURL").trim();
+                            emailid = getIntent().getStringExtra("emailid").trim();
+                            latitude = getIntent().getStringExtra("latitude").trim();
+                            longitude = getIntent().getStringExtra("longitude").trim();
+
+                            Intent intent = new Intent(DriverVerifyPhone.this , DriverInfomationActivity.class);
+                            intent.putExtra("phonenumber",phoneno);
+                            intent.putExtra("fname",fname);
+                            intent.putExtra("lname",lname);
+                            intent.putExtra("password",password);
+                            intent.putExtra("house",house);
+                            intent.putExtra("confpassword",confpassword);
+                            intent.putExtra("statee",statee);
+                            intent.putExtra("cityy",cityy);
+                            intent.putExtra("Area",Area);
+                            intent.putExtra("cpAddress",cpAddress);
+                            intent.putExtra("ImageURL",ImageURL);
+                            intent.putExtra("emailid",emailid);
+                            intent.putExtra("latitude",latitude);
+                            intent.putExtra("longitude",longitude);
+
                             startActivity(intent);
                             finish();
                         }else{

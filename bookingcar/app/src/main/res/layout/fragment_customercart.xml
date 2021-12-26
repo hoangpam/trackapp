@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/toolbarRlD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rect02"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/searchProductEt"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/search_bg"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:hint="Tìm kiếm đồ ăn thức uống ở đây"
+            android:imeOptions="actionSearch"
+            android:inputType="textPersonName|textCapWords"
+            android:singleLine="true"
+            android:textSize="12dp" />
+        <!--Voice text-->
+        <ImageButton
+            android:id="@+id/voiceProductBtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toLeftOf="@+id/filterProductBtn"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_microphone" />
+        <!--Filter-->
+        <ImageButton
+            android:id="@+id/filterProductBtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_filter_gray" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarRlD"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tặng mã giảm giá cho 50k cho đơn đầu tiên trong tháng"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/Title1Tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Có hiệu lực từ ngày 29/12/2021 đến ngày 15/01/2022" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="73dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="73dp"
+                android:layout_marginRight="1dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/orange"
+                android:background="@color/orange2"
+
+                android:text="Áp dụng" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

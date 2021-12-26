@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                                             Log.e("firebase", "Error getting data", task.getException());
                                             Toasty.custom(MainActivity.this, ban, getResources().getDrawable(R.drawable.ic_facebook),
                                                     android.R.color.black, android.R.color.holo_green_light, Toasty.LENGTH_SHORT, true, true).show();
-                                            ReusableCodeForAll.ShowAlert(MainActivity.this, "Lỗi kìa", "" + task.getException());
+                                            ReusableCodeForAll.ShowAlert(MainActivity.this, "Thông báo lỗi", "" + task.getException());
                                         }
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {

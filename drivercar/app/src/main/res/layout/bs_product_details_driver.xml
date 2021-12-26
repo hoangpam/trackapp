@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <!---->
     <RelativeLayout
+        android:id="@+id/toolbarRldau"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/shape_rect01"
@@ -34,36 +35,29 @@
             android:background="@null"
             android:layout_alignParentEnd="true"
             />
+
         <TextView
             android:id="@+id/nameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_centerHorizontal="true"
-            android:text="Chi tiết sản phẩm "
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_gravity="center"
-            android:textColor="@color/white"/>
+            android:layout_marginLeft="50dp"
+            android:text="Chi tiết tài xế"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/productIconIv"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/shape_rect02"
-        android:adjustViewBounds="true"
-        android:padding="5dp"
-        android:src="@drawable/ic_shop"
-        />
+
+
+        android:src="@drawable/ic_shop" />
 
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/productIconIv"
+        android:layout_below="@+id/toolbarRldau"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:padding="10dp">

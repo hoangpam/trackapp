@@ -3,29 +3,88 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/bg_states.xml" value="0.14947916666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_baseline_shedule_time_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_baseline_shopping_cart_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_cart.xml" value="0.14947916666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_filter_gray.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_key_white.xml" value="0.24351851851851852" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_location.xml" value="0.24351851851851852" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_microphone.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_next_gray.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_orders_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/ic_search_black_24dp.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/search_bg.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_circle01.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_circle03.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect0011.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect01.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect02.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect03.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect04.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect05.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable-v24/shape_rect06.xml" value="0.15" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/background_shape.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/bg_border.xml" value="0.2361111111111111" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/btnblueish.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/btnred.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/button_facebook.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/button_google.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/button_shape.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_add_btn.xml" value="0.15104166666666666" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_back.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_camera_24.xml" value="0.15" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_down_gray.xml" value="0.2361111111111111" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_google.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_key.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_login.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_map.xml" value="0.15052083333333333" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_phone.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_rating.xml" value="0.24074074074074073" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_remove.xml" value="0.15104166666666666" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_security_black_24dp.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/ic_sort.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/shape_circle01.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/drawable/shape_rect01.xml" value="0.25833333333333336" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/font/open_sans_bold.xml" value="0.1640625" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/font/open_sans_semibold.xml" value="0.1640625" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_customer_panel__bottom_navigation.xml" value="0.2" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_customerlogin.xml" value="0.4" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_driver_detals.xml" value="0.13333333333333333" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_infomation.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_loginphone.xml" value="0.13385416666666666" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_main_menu.xml" value="0.264" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_order_details_users.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_registration.xml" value="0.16799999999999998" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_sendotp.xml" value="0.13385416666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/activity_verify_phone.xml" value="0.13385416666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/dialog_car_registration.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/dialog_cart.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/dialog_quantity.xml" value="0.13489583333333333" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fagment_infomation.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fagment_infomation_license.xml" value="0.259375" />
         <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/forgot_password_layout.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fragment_customercart.xml" value="0.264" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fragment_customerhome.xml" value="0.4" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fragment_customerorders.xml" value="0.13385416666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fragment_customerprofile.xml" value="0.13385416666666666" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/fragment_customertrack.xml" value="0.264" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/ic_location.xml" value="0.259375" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_cartitem.xml" value="0.330173775671406" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_driver.xml" value="0.264" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_order_user.xml" value="0.4" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_orderditem.xml" value="0.2" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_product_booking.xml" value="0.176" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_product_driver.xml" value="0.2" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/layout/row_product_user.xml" value="0.2" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/bookingcar/app/src/main/res/menu/customer_bottom_navigation.xml" value="0.13385416666666666" />
       </map>
     </option>
   </component>

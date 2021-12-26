@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:title="Đơn hàng"
+        android:id="@+id/cus_order"
+        android:icon="@drawable/ic_orders_24"/>
+    <item
+        android:title="Ưu đãi"
+        android:id="@+id/cus_endow"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"/>
+    <item
+        android:title=""
+        android:id="@+id/cus_add"
+        android:icon="@drawable/ic_add_btn" />
+    <item
+        android:title="Thông báo"
+        android:id="@+id/cus_notification"
+        android:icon="@drawable/ic_notification"/>
+    <item
+        android:title="Tài khoản"
+        android:id="@+id/cust_profile"
+        android:icon="@drawable/ic_account"/>
+</menu>

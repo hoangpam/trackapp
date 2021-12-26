@@ -25,7 +25,7 @@
         android:layout_width="159dp"
         android:layout_height="140dp"
         android:fontFamily="monospace"
-        android:text="Chào mừng bạn đến với app"
+        android:text="Chào mừng bạn đến với app Driver Car"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/Black"
@@ -35,6 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.747" />
+        app:layout_constraintVertical_bias="0.745" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,6 +48,8 @@
     <string name="language_vietnamese_code" translatable="false">vi</string>
     <string name="speech_to_text_info">Hãy nói vài điều bạn muốn tìm 🐷</string>
 
+    <string name="nameproduct">Tấn</string>
+
     <string-array name="language_codes">
         <item>@string/language_english_code</item>
         <item>@string/language_japanese_code</item>

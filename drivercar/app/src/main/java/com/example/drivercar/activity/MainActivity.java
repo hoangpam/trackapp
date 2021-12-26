@@ -136,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
                                                             String role = snapshot.getValue(String.class);
                                                             progressDialog.dismiss();
 
+                                                            if(role == null)
+                                                            {
+                                                                startActivity(new Intent(MainActivity.this, MainMenu.class));
+                                                                finish();
+                                                            }
                                                             if (role.equals("Driver")) {
                                                                 startActivity(new Intent(MainActivity.this, DriverPanel_BottomNavigation.class));
                                                                 finish();
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                                                 startActivity(new Intent(MainActivity.this, MainMenu.class));
                                                                 finish();
                                                             }
+
 
                                                         }
 

@@ -237,35 +237,35 @@ public class MainMenu extends AppCompatActivity {
 
 
         //configure the Google Signin
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+//        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build();
+//        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
 
-        googleSinginBtn = findViewById(R.id.googleSinginBtn);
+//        googleSinginBtn = findViewById(R.id.googleSinginBtn);
 
         //Google SignInButton Click to begin Google SignIn
 //        binding.getRoot().findViewById(R.id.googleSinginBtn)
-        googleSinginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //begin google sign in
-                final ProgressDialog mDialog = new ProgressDialog(MainMenu.this);
-                mDialog.setCancelable(false);
-                mDialog.setCanceledOnTouchOutside(false);
-                mDialog.setTitle("\uD83D\uDC37 \n Tình hình máy yếu vui lòng chờ");
-                mDialog.setMessage("Đang mở thông báo ......");
-                mDialog.show();
-                Log.d(TAG, "onClick: begin Google SignIn && { Bắt đầu Đăng nhập Google }");
-                Toasty.warning(MainMenu.this, "\uD83D\uDC37 \nTình hình máy yếu vui lòng chờ", Toast.LENGTH_LONG,true).show();
-                Intent intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent, RC_SIGN_IN);
-            }
-        });
+//        googleSinginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //begin google sign in
+//                final ProgressDialog mDialog = new ProgressDialog(MainMenu.this);
+//                mDialog.setCancelable(false);
+//                mDialog.setCanceledOnTouchOutside(false);
+//                mDialog.setTitle("\uD83D\uDC37 \n Tình hình máy yếu vui lòng chờ");
+//                mDialog.setMessage("Đang mở thông báo ......");
+//                mDialog.show();
+//                Log.d(TAG, "onClick: begin Google SignIn && { Bắt đầu Đăng nhập Google }");
+//                Toasty.warning(MainMenu.this, "\uD83D\uDC37 \nTình hình máy yếu vui lòng chờ", Toast.LENGTH_LONG,true).show();
+//                Intent intent = googleSignInClient.getSignInIntent();
+//                startActivityForResult(intent, RC_SIGN_IN);
+//            }
+//        });
 
 
         signinemail.setOnClickListener(new View.OnClickListener() {
@@ -299,39 +299,39 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("LongLogTag")
-    private void handlerFacebookToken(AccessToken accessToken) {
-        Log.d(TAG1,"handleFacebookToken"+accessToken);
+//    @SuppressLint("LongLogTag")
+//    private void handlerFacebookToken(AccessToken accessToken) {
+//        Log.d(TAG1,"handleFacebookToken"+accessToken);
+//
+//        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+//        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @SuppressLint("LongLogTag")
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(MainMenu.this, "Đã đang nhập thành công", Toast.LENGTH_SHORT).show();
+//                    Log.d(TAG1,"sign in with credential: successful");
+//                    FirebaseUser user = firebaseAuth.getCurrentUser();
+//                    updateUI(user);
+//                }else {
+//                    Log.d(TAG1,"sign in with credential: failure\n",task.getException());
+//                    Toasty.error(MainMenu.this, "Authencation Failed", Toast.LENGTH_SHORT,true).show();
+//                    updateUI(null);
+//                }
+//            }
+//        });
+//    }
 
-        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(MainMenu.this, "Đã đang nhập thành công", Toast.LENGTH_SHORT).show();
-                    Log.d(TAG1,"sign in with credential: successful");
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    updateUI(user);
-                }else {
-                    Log.d(TAG1,"sign in with credential: failure\n",task.getException());
-                    Toasty.error(MainMenu.this, "Authencation Failed", Toast.LENGTH_SHORT,true).show();
-                    updateUI(null);
-                }
-            }
-        });
-    }
-
-    @SuppressLint("LongLogTag")
-    private void updateUI(FirebaseUser user) {
-        if(user != null){
-            Log.d(TAG1,"sign in whith user");
-            Toasty.success(this, "tt", Toast.LENGTH_SHORT,true).show();
-        }else {
-            Log.d(TAG1,"errorf");
-            Toasty.error(this, "Lỗi kìa", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    @SuppressLint("LongLogTag")
+//    private void updateUI(FirebaseUser user) {
+//        if(user != null){
+//            Log.d(TAG1,"sign in whith user");
+//            Toasty.success(this, "tt", Toast.LENGTH_SHORT,true).show();
+//        }else {
+//            Log.d(TAG1,"errorf");
+//            Toasty.error(this, "Lỗi kìa", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     protected void onStart() {
@@ -357,29 +357,29 @@ public class MainMenu extends AppCompatActivity {
         System.gc();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-//        mCallbackManager.onActivityResult(requestCode,resultCode,data);
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(....)
-        if(requestCode == RC_SIGN_IN){
-            Log.d(TAG,"onActivityResult: Google Signin intent result && { Kết quả ý định của Google Signin }");
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                //google sign in success, now auth with firebase
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-            }catch (Exception e){
-                //failed google sign in
-                Log.e(TAG,"onActivityResult: "+e.getMessage());
-                ReusableCodeForAll.ShowAlert(this,"Đang lỗi",""+e.getMessage());
-            }
-        }
-
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//
+////        mCallbackManager.onActivityResult(requestCode,resultCode,data);
+//
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        //Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(....)
+//        if(requestCode == RC_SIGN_IN){
+//            Log.d(TAG,"onActivityResult: Google Signin intent result && { Kết quả ý định của Google Signin }");
+//            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                //google sign in success, now auth with firebase
+//                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
+//                firebaseAuthWithGoogleAccount(account);
+//            }catch (Exception e){
+//                //failed google sign in
+//                Log.e(TAG,"onActivityResult: "+e.getMessage());
+//                ReusableCodeForAll.ShowAlert(this,"Đang lỗi",""+e.getMessage());
+//            }
+//        }
+//
+//    }
 
     private CharSequence getFormattedMessage() {
         final String prefix = "Formatted ";
@@ -402,201 +402,202 @@ public class MainMenu extends AppCompatActivity {
     public void UpdateDM(){
 
     }
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
-        Log.d(TAG,"firebaseAuthWithGoogleAccount: begin firebase auth with google acccount && { Bắt đầu xác thực firebase với tài khoản google }");
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
-
-        final ProgressDialog mDialog = new ProgressDialog(MainMenu.this);
-        mDialog.setCancelable(false);
-        mDialog.setCanceledOnTouchOutside(false);
-        mDialog.setTitle("Tình hình mạng yếu");
-        mDialog.setMessage("Đang đăng ký và tải hình đại diện lên, vui lòng đợi......");
-        mDialog.show();
-
-        firebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //login success
-                        Log.d(TAG,"onSuccess: Logged In");
-
-                        if(image_uri == null ){
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            String uid = firebaseUser.getUid();
-                            String fname = firebaseUser.getDisplayName();
-                            String emailid = firebaseUser.getEmail();
-                            String phone =firebaseUser.getPhoneNumber();
-                            String timestamp = ""+System.currentTimeMillis();
-
-
-                            HashMap<String, String> hashMap1 = new HashMap<>();
-                            hashMap1.put("UID", "" + uid);
-                            hashMap1.put("MobileNo", ""+phone);
-                            hashMap1.put("LastName", "");
-                            hashMap1.put("City", "Hồ Chí Minh");
-                            hashMap1.put("Area", "Tân Quý");//phường xã
-                            hashMap1.put("Password", "123456789");
-                            hashMap1.put("CompleteAddress", "123 Lê Quý Phường Tân Quý Quận Tân Phú Thành phố Hồ Chí Minh");
-                            hashMap1.put("State", "Tân Phú");//Quận huyện
-                            hashMap1.put("ConfirmPassword", "123456789");
-                            hashMap1.put("House", "123");//Số đường
-                            hashMap1.put("ImageURL", "");//url of uploadted image
-                            hashMap1.put("ImageURL1", "");//url of uploadted image
-                            hashMap1.put("ImageURL2", "");//url of uploadted image
-                            hashMap1.put("ImageURL3", "");//url of uploadted image
-
-                            hashMap1.put("Latitude", "0.0" );
-                            hashMap1.put("Longitude", "0.0" );
-                            hashMap1.put("Online", "true");
-                            hashMap1.put("DriverOpen", "true");
-                            hashMap1.put("AccountType","Driver");
-                            hashMap1.put("FirstName", fname);
-                            hashMap1.put("EmailId", emailid);
-                            hashMap1.put("Timestamp", "" + timestamp);//+DateFormat.getTimeInstance().format(new Date())
-
-                            databaseReference
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    mDialog.dismiss();
-                                    if(task.isSuccessful()){
-
-                                        Toasty.success(MainMenu.this, "Đăng nhập thành công", Toast.LENGTH_SHORT,true).show();
-                                        Intent Z = new Intent(MainMenu.this, DriverPanel_BottomNavigation.class);
-
-                                        startActivity(Z);
-                                        finish();
-                                    }
-                                    else{
-                                        mDialog.dismiss();
-                                        ReusableCodeForAll.ShowAlert(MainMenu.this,"Kết nối của bạn đang bị lỗi",task.getException().getMessage());
-                                    }
-
-                                }
-                            });
-
-                        }else{
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-                            String filePathAndName = "profile_image/" + "" + firebaseAuth.getUid();
-
-                            image_uri = firebaseUser.getPhotoUrl();
-
-                            final ProgressDialog progressDialog = new ProgressDialog(MainMenu.this);
-                            progressDialog.setCancelable(false);
-                            progressDialog.setCanceledOnTouchOutside(false);
-                            progressDialog.setIndeterminate(false);
-                            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                            progressDialog.setProgress(0);
-                            progressDialog.setTitle("Tình hình mạng yếu");
-                            progressDialog.setMessage("Đang đăng ký và tải hình ảnh đại diện lên, vui lòng đợi tí....");
-                            progressDialog.show();
-
-                            //dành cho truy cập firebase
-                            storage = FirebaseStorage.getInstance();
-                            storageReference = storage.getReference();
-
-                            ref = FirebaseStorage.getInstance().getReference(filePathAndName);
-
-                            ref.putFile(image_uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                                    while (!uriTask.isSuccessful()) ;
-                                    Uri downloadImageUri = uriTask.getResult();
-
-                                    String uid = firebaseUser.getUid();
-                                    String fname = firebaseUser.getDisplayName();
-                                    String emailid = firebaseUser.getEmail();
-                                    String phone =firebaseUser.getPhoneNumber();
-                                    String timestamp = ""+System.currentTimeMillis();
-
-                                    HashMap<String, String> hashMap1 = new HashMap<>();
-                                    hashMap1.put("UID", "" + uid);
-                                    hashMap1.put("MobileNo", ""+phone);
-                                    hashMap1.put("LastName", "");
-                                    hashMap1.put("City", "Hồ Chí Minh");
-                                    hashMap1.put("Area", "Tân Quý");//phường xã
-                                    hashMap1.put("Password", "123456789");
-                                    hashMap1.put("CompleteAddress", "123 Lê Quý Phường Tân Quý Quận Tân Phú Thành phố Hồ Chí Minh");
-                                    hashMap1.put("State", "Tân Phú");//Quận huyện
-                                    hashMap1.put("ConfirmPassword", "123456789");
-                                    hashMap1.put("House", "123");//Số đường
-                                    hashMap1.put("Latitude", "0.0" );
-                                    hashMap1.put("Longitude", "0.0" );
-                                    hashMap1.put("Online", "true");
-                                    hashMap1.put("DriverOpen", "true");
-                                    hashMap1.put("AccountType","Driver");
-                                    hashMap1.put("FirstName", fname);
-                                    hashMap1.put("EmailId", emailid);
-                                    hashMap1.put("ImageURL", ""+downloadImageUri);
-                                    hashMap1.put("ImageURL1", ""+downloadImageUri);
-                                    hashMap1.put("ImageURL2", ""+downloadImageUri);
-                                    hashMap1.put("ImageURL3", ""+downloadImageUri);
-                                    hashMap1.put("Timestamp", "" + timestamp);//+DateFormat.getTimeInstance().format(new Date())
-
-
-
-                                    databaseReference
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
-                                                progressDialog.dismiss();
-                                                mDialog.dismiss();
-
-                                                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                                                while (!uriTask.isSuccessful()) ;
-                                                Uri downloadImageUri = uriTask.getResult();
-                                                String image = ""+downloadImageUri;
-
-                                                Toasty.success(MainMenu.this, "Đăng nhập thành công", Toast.LENGTH_SHORT,true).show();
-                                                Intent Z = new Intent(MainMenu.this, DriverPanel_BottomNavigation.class);
-                                                startActivity(Z);
-                                                finish();
-                                            }
-                                            else{
-                                                progressDialog.dismiss();
-                                                mDialog.dismiss();
-                                                ReusableCodeForAll.ShowAlert(MainMenu.this,"Kết nối của bạn đang bị lỗi",task.getException().getMessage());
-                                            }
-
-                                        }
-                                    });
-
-                                }
-                            })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-
-                                }
-                            })
-                                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                            double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                                            progressDialog.setMessage("Đang tải " + (int) progress + "%");
-                                            progressDialog.setCanceledOnTouchOutside(false);
-                                        }
-                                    });
-
-                        }
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //login failed
-                        Erro();
-                        Log.e(TAG,"onFailure: Logged failed &&{ Ghi nhật ký không thành công }\n"+e.getMessage());
-                        Toasty.error(MainMenu.this, "Đăng nhập không thành công\n"+e.getMessage(), Toast.LENGTH_SHORT,true).show();
-                    }
-                });
-
-
-
-    }
+//    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account) {
+//        Log.d(TAG,"firebaseAuthWithGoogleAccount: begin firebase auth with google acccount && { Bắt đầu xác thực firebase với tài khoản google }");
+//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+//
+//        final ProgressDialog mDialog = new ProgressDialog(MainMenu.this);
+//        mDialog.setCancelable(false);
+//        mDialog.setCanceledOnTouchOutside(false);
+//        mDialog.setTitle("Tình hình mạng yếu");
+//        mDialog.setMessage("Đang đăng ký và tải hình đại diện lên, vui lòng đợi......");
+//        mDialog.show();
+//
+//        firebaseAuth.signInWithCredential(credential)
+//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//                        //login success
+//                        Log.d(TAG,"onSuccess: Logged In");
+//
+//                        if(image_uri == null ){
+//                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//                            String uid = firebaseUser.getUid();
+//                            String fname = firebaseUser.getDisplayName();
+//                            String emailid = firebaseUser.getEmail();
+//                            String phone =firebaseUser.getPhoneNumber();
+//                            String timestamp = ""+System.currentTimeMillis();
+//                            Uri photo = firebaseUser.getPhotoUrl();
+//
+//
+//                            HashMap<String, String> hashMap1 = new HashMap<>();
+//                            hashMap1.put("UID", ""+uid);
+//                            hashMap1.put("MobileNo",""+phone);
+//                            hashMap1.put("LastName", "");
+//                            hashMap1.put("City", "Hồ Chí Minh");
+//                            hashMap1.put("Area", "Tân " +
+//                                    "");//phường xã
+//                            hashMap1.put("Password", "123456789");
+//                            hashMap1.put("CompleteAddress", "123 Lê Quý Phường Tân Quý Quận Tân Phú Thành phố Hồ Chí Minh");
+//                            hashMap1.put("State", "Tân Phú");//Quận huyện
+//                            hashMap1.put("ConfirmPassword", "123456789");
+//                            hashMap1.put("House", "123");//Số đường
+//                            hashMap1.put("ImageURL", "");//url of uploadted image
+//                            hashMap1.put("ImageURL1", "");//url of uploadted image
+//                            hashMap1.put("ImageURL2", "");//url of uploadted image
+//                            hashMap1.put("ImageURL3", "");//url of uploadted image
+//                            hashMap1.put("Latitude", "0.0" );
+//                            hashMap1.put("Longitude", "0.0" );
+//                            hashMap1.put("Online", "true");
+//                            hashMap1.put("DriverOpen", "true");
+//                            hashMap1.put("AccountType","Driver");
+//                            hashMap1.put("FirstName", fname);
+//                            hashMap1.put("EmailId", emailid);
+//                            hashMap1.put("Timestamp", ""+timestamp);//+DateFormat.getTimeInstance().format(new Date())
+//
+//                            databaseReference
+//                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                                    .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    mDialog.dismiss();
+//                                    if(task.isSuccessful()){
+//
+//                                        Toasty.success(MainMenu.this, "Đăng nhập thành công", Toast.LENGTH_SHORT,true).show();
+//                                        Intent Z = new Intent(MainMenu.this, DriverInfomationActivity.class);
+//
+//                                        startActivity(Z);
+//                                        finish();
+//                                    }
+//                                    else{
+//                                        mDialog.dismiss();
+//                                        ReusableCodeForAll.ShowAlert(MainMenu.this,"Kết nối của bạn đang bị lỗi",task.getException().getMessage());
+//                                    }
+//
+//                                }
+//                            });
+//
+//                        }else{
+//                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//
+//                            String filePathAndName = "profile_image/" + "" + firebaseAuth.getUid();
+//
+//                            image_uri = firebaseUser.getPhotoUrl();
+//
+//                            final ProgressDialog progressDialog = new ProgressDialog(MainMenu.this);
+//                            progressDialog.setCancelable(false);
+//                            progressDialog.setCanceledOnTouchOutside(false);
+//                            progressDialog.setIndeterminate(false);
+//                            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//                            progressDialog.setProgress(0);
+//                            progressDialog.setTitle("Tình hình mạng yếu");
+//                            progressDialog.setMessage("Đang đăng ký và tải hình ảnh đại diện lên, vui lòng đợi tí....");
+//                            progressDialog.show();
+//
+//                            //dành cho truy cập firebase
+//                            storage = FirebaseStorage.getInstance();
+//                            storageReference = storage.getReference();
+//
+//                            ref = FirebaseStorage.getInstance().getReference(filePathAndName);
+//
+//                            ref.putFile(image_uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                @Override
+//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+//                                    while (!uriTask.isSuccessful()) ;
+//                                    Uri downloadImageUri = uriTask.getResult();
+//
+//                                    String uid = firebaseUser.getUid();
+//                                    String fname = firebaseUser.getDisplayName();
+//                                    String emailid = firebaseUser.getEmail();
+//                                    String phone =firebaseUser.getPhoneNumber();
+//                                    String timestamp = ""+System.currentTimeMillis();
+//
+//                                    HashMap<String, String> hashMap1 = new HashMap<>();
+//                                    hashMap1.put("UID", "" + uid);
+//                                    hashMap1.put("MobileNo", ""+phone);
+//                                    hashMap1.put("LastName", "");
+//                                    hashMap1.put("City", "Hồ Chí Minh");
+//                                    hashMap1.put("Area", "Tân Quý");//phường xã
+//                                    hashMap1.put("Password", "123456789");
+//                                    hashMap1.put("CompleteAddress", "123 Lê Quý Phường Tân Quý Quận Tân Phú Thành phố Hồ Chí Minh");
+//                                    hashMap1.put("State", "Tân Phú");//Quận huyện
+//                                    hashMap1.put("ConfirmPassword", "123456789");
+//                                    hashMap1.put("House", "123");//Số đường
+//                                    hashMap1.put("Latitude", "0.0" );
+//                                    hashMap1.put("Longitude", "0.0" );
+//                                    hashMap1.put("Online", "true");
+//                                    hashMap1.put("DriverOpen", "true");
+//                                    hashMap1.put("AccountType","Driver");
+//                                    hashMap1.put("FirstName", fname);
+//                                    hashMap1.put("EmailId", emailid);
+//                                    hashMap1.put("ImageURL", ""+downloadImageUri);
+//                                    hashMap1.put("ImageURL1", ""+downloadImageUri);
+//                                    hashMap1.put("ImageURL2", ""+downloadImageUri);
+//                                    hashMap1.put("ImageURL3", ""+downloadImageUri);
+//                                    hashMap1.put("Timestamp", "" + timestamp);//+DateFormat.getTimeInstance().format(new Date())
+//
+//
+//
+//                                    databaseReference
+//                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                                            .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if(task.isSuccessful()){
+//                                                progressDialog.dismiss();
+//                                                mDialog.dismiss();
+//
+//                                                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+//                                                while (!uriTask.isSuccessful()) ;
+//                                                Uri downloadImageUri = uriTask.getResult();
+//                                                String image = ""+downloadImageUri;
+//
+//                                                Toasty.success(MainMenu.this, "Đăng nhập thành công", Toast.LENGTH_SHORT,true).show();
+//                                                Intent Z = new Intent(MainMenu.this, DriverInfomationActivity.class);
+//                                                startActivity(Z);
+//                                                finish();
+//                                            }
+//                                            else{
+//                                                progressDialog.dismiss();
+//                                                mDialog.dismiss();
+//                                                ReusableCodeForAll.ShowAlert(MainMenu.this,"Kết nối của bạn đang bị lỗi",task.getException().getMessage());
+//                                            }
+//
+//                                        }
+//                                    });
+//
+//                                }
+//                            })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//
+//                                }
+//                            })
+//                                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                                        @Override
+//                                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+//                                            double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+//                                            progressDialog.setMessage("Đang tải " + (int) progress + "%");
+//                                            progressDialog.setCanceledOnTouchOutside(false);
+//                                        }
+//                                    });
+//
+//                        }
+//
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        //login failed
+//                        Erro();
+//                        Log.e(TAG,"onFailure: Logged failed &&{ Ghi nhật ký không thành công }\n"+e.getMessage());
+//                        Toasty.error(MainMenu.this, "Đăng nhập không thành công\n"+e.getMessage(), Toast.LENGTH_SHORT,true).show();
+//                    }
+//                });
+//
+//
+//
+//    }
 }

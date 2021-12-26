@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="1dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp"
+    android:background="@drawable/shape_rect0011">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_states"
+        >
+
+        <TextView
+            android:id="@+id/decor_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá khách hàng đề xuất"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/negotiate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            android:text="Thương lượng"
+            android:textColor="@color/orange" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/negotiate"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/negotiate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Đã có"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/negotiate_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/negotiate1"
+                android:padding="5dp"
+                android:text="10"
+                android:textColor="@color/orange1"
+                android:textSize="10dp" />
+            <TextView
+                android:id="@+id/negotiate2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/negotiate_number"
+                android:padding="5dp"
+                android:text="chủ xe gửi báo giá"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/decor_price"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="40dp"
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/RLlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_border"
+                android:gravity="center"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/locationGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Đồng Nai"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/nextIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/locationGo"
+                    android:background="@drawable/ic_next_gray" />
+
+                <TextView
+                    android:id="@+id/locationG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/nextIv"
+                    android:padding="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Bà Rịa Vũ Tàu"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RLtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLlocation"
+                android:background="@drawable/bg_border"
+
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/TimeIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_calendar">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/TimeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/TimeIV"
+                    android:layout_marginLeft="20dp"
+                    android:text="03/09/2021,10:10PM"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/RLweight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLtime"
+                android:background="@drawable/bg_border"
+
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/weightIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/weight">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/weightTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/weightIV"
+                    android:layout_marginLeft="20dp"
+                    android:text="2 tấn"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/weight2TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/weightTV"
+                    android:layout_marginLeft="20dp"
+                    android:text="2 tấn"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/RLcar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLweight"
+                android:background="@drawable/bg_border"
+
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/carIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_truck">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/carTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/carIV"
+                    android:text="2 xe"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/car2TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/carTV"
+                    android:text="Xe thùng mui bạt"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

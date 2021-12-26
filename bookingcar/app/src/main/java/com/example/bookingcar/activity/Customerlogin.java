@@ -113,7 +113,7 @@ public class Customerlogin extends AppCompatActivity {
                         mDialog.setTitle("Tình hình mạng yếu");
                         mDialog.setCanceledOnTouchOutside(false);
                         mDialog.setCancelable(false);
-                        mDialog.setMessage("Đang đăng nhập Vui lòng đợi.......");
+                        mDialog.setMessage("Đang đăng nhập vui lòng đợi.......");
                         mDialog.show();
 
 
@@ -136,7 +136,7 @@ public class Customerlogin extends AppCompatActivity {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Toasty.success(Customerlogin.this, "Shop đang online!", Toast.LENGTH_SHORT, true).show();
+                                                        Toasty.success(Customerlogin.this, "KH đang online!", Toast.LENGTH_SHORT, true).show();
 
 //                                                        Toast.makeText(Cheflogin.this, "Shop đang online", Toast.LENGTH_SHORT).show();
                                                         mDialog.dismiss();

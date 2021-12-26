@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/allproductRL"
     android:orientation="vertical"
     tools:menu="@menu/logout">
-    <!--Products-->
+
     <RelativeLayout
-        android:id="@+id/productRL"
+        android:id="@+id/toolbarRlD"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp" >
-        <!--SearchView-->
+        android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/searchProductEt"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/search_bg"
             android:drawableStart="@drawable/ic_search_black_24dp"
             android:hint="Tìm kiếm đồ ăn thức uống ở đây"
-            android:inputType="textPersonName|textCapWords"
             android:imeOptions="actionSearch"
-            android:textSize="12dp"
-            android:singleLine="true"/>
+            android:inputType="textPersonName|textCapWords"
+            android:singleLine="true"
+            android:textSize="12dp" />
         <!--Voice text-->
         <ImageButton
             android:id="@+id/voiceProductBtn"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_toLeftOf="@+id/filterProductBtn"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_toLeftOf="@+id/filterProductBtn"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_microphone"/>
+            app:srcCompat="@drawable/ic_microphone" />
         <!--Filter-->
         <ImageButton
             android:id="@+id/filterProductBtn"
@@ -46,26 +49,119 @@
             android:layout_marginEnd="5dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_filter_gray"/>
+            app:srcCompat="@drawable/ic_filter_gray" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarRlD"
+        android:background="@drawable/shape_rect02"
+        android:padding="10dp">
+
+
+        <!--Tabs Products, Order -->
+        <LinearLayout
+            android:id="@+id/ll_dieukhien"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/shape_rect03"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tabLoadingTv"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect04"
+                android:gravity="center"
+                android:text="Đang thực hiện"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tabCompleTv"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect03"
+                android:gravity="center"
+                android:text="Đã hoàn thành"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tabMySefTv"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rect03"
+                android:gravity="center"
+                android:text="Của tôi"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/productRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarRl"
+        >
+        <!--SearchView-->
+
+
         <TextView
             android:id="@+id/filterProductTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/searchProductEt"
-            android:textColor="@color/black"
-            android:text="Hiển thị tất cả"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="5dp"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@+id/filterProductTv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
+            android:text="Hiển thị tất cả"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/AddDriverBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@+id/filterProductTv"
+            android:backgroundTint="@color/green"
+            android:text="Thêm xe" />
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Recycle_menu"
-            tools:listitem="@layout/row_product_chef"
-            >
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/AddDriverBtn"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            tools:listitem="@layout/row_product_driver" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Recycle_menu2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/AddDriverBtn"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            tools:listitem="@layout/row_product_booking" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Recycle_menu3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/AddDriverBtn"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            tools:listitem="" />
+
     </RelativeLayout>
 
     

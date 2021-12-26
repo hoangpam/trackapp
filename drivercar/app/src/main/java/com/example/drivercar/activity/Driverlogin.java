@@ -136,7 +136,7 @@ public class Driverlogin extends AppCompatActivity {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                        Toasty.success(Driverlogin.this, "Shop đang online!", Toast.LENGTH_SHORT, true).show();
+                                                        Toasty.success(Driverlogin.this, "Tài xế đang online!", Toast.LENGTH_SHORT, true).show();
 
 //                                                        Toast.makeText(Cheflogin.this, "Shop đang online", Toast.LENGTH_SHORT).show();
                                                         mDialog.dismiss();
