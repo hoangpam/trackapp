@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drivercar.FilterProductDriver.FilterDriver;
 import com.example.drivercar.R;
+import com.example.drivercar.activity.EditInfoDriver;
 import com.example.drivercar.model.ModelCars;
 import com.example.drivercar.model.ModelDriver;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -153,7 +154,9 @@ public class AdapterProductDriver extends RecyclerView.Adapter<AdapterProductDri
         holder.updayeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, EditInfoDriver.class);
 
+                context.startActivity(intent);
             }
         });
 

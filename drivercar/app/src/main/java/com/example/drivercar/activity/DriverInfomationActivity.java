@@ -346,8 +346,8 @@ public class DriverInfomationActivity extends AppCompatActivity {
                                                                                         hashMap1.put("License_Plates",""+license_Plate);
                                                                                         hashMap1.put("Status","Đang chờ phê duyệt");
                                                                                         hashMap1.put("Plate",""+plate);
-                                                                                        hashMap.put("uid",""+FAuth.getUid());
-                                                                                        databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cars")
+                                                                                        hashMap1.put("uid",""+FAuth.getUid());
+                                                                                        databaseReference.child("Cars")
                                                                                                 .child(timestamp)
                                                                                                 .setValue(hashMap1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                             @Override

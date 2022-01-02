@@ -51,7 +51,6 @@ public class CustomerPanel_BottomNavigation extends AppCompatActivity {
 
     private ArrayList<ModeDriver> driverList;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +71,8 @@ public class CustomerPanel_BottomNavigation extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth = FirebaseAuth.getInstance();
         checkUser();
+
+
 
 
 
@@ -150,36 +151,7 @@ public class CustomerPanel_BottomNavigation extends AppCompatActivity {
         }
     }
 
-    private void loadMyInfo() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.orderByChild("UID").equalTo(firebaseAuth.getUid())
-                .addValueEventListener( new ValueEventListener(){
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds: snapshot.getChildren()){
-                            String fname =""+ds.child("FirstName").getValue();
-                            String name = ""+ds.child("LastName").getValue();
-                            String phone = ""+ds.child("MobileNo").getValue();
-                            String email = ""+ds.child("EmailId").getValue();
-                            String profile = ""+ds.child("ImageURL").getValue();
-                            String city =""+ds.child("City").getValue();
-                            String accountType = ""+ds.child("AccountType").getValue();
-                            String state = ""+ds.child("State").getValue();
-
-
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-    }
 
 
 

@@ -87,6 +87,7 @@ public class MainMenu extends AppCompatActivity {
     private AccessTokenTracker accessTokenTracker;
 
     double latitude = 0.0, longitude = 0.0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -271,6 +272,7 @@ public class MainMenu extends AppCompatActivity {
         signinemail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent signemail = new Intent(MainMenu.this,Customerlogin.class);
                 signemail.putExtra("Home","Email");
                 startActivity(signemail);

@@ -1,33 +1,18 @@
-package com.example.drivercar.adapter_customer;
+package com.example.bookingcar.adapter_Customer;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.drivercar.FilterProductUser.FilterProductUser;
-import com.example.drivercar.R;
-import com.example.drivercar.activity.DriverPhoneActivity;
-import com.example.drivercar.model.ModelDriver;
-import com.example.drivercar.model.ModelInfomation;
-
-import org.w3c.dom.Text;
+import com.example.bookingcar.R;
+import com.example.bookingcar.model.ModelInfomation;
 
 import java.util.ArrayList;
-
-import es.dmoral.toasty.Toasty;
-import p32929.androideasysql_library.Column;
-import p32929.androideasysql_library.EasyDB;
 
 public class AdapterInfomation extends RecyclerView.Adapter<AdapterInfomation.HolderInfomation>  {
 
@@ -41,14 +26,14 @@ public class AdapterInfomation extends RecyclerView.Adapter<AdapterInfomation.Ho
 
         @NonNull
         @Override
-        public AdapterInfomation.HolderInfomation onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public HolderInfomation onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             //inflare layout
             View view = LayoutInflater.from(context).inflate(R.layout.row_product_booking,parent,false);
-            return new AdapterInfomation.HolderInfomation(view);
+            return new HolderInfomation(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AdapterInfomation.HolderInfomation holder, int position) {
+        public void onBindViewHolder(@NonNull HolderInfomation holder, int position) {
             //get data
             ModelInfomation modelInfomation = infomationsList.get(position);
             String nameCarInfo = modelInfomation.getNameCarInfo();
@@ -63,16 +48,7 @@ public class AdapterInfomation extends RecyclerView.Adapter<AdapterInfomation.Ho
             holder.TimeTV.setText(rankingTimeInfo);
             holder.weightTV.setText(cargoInfo+"tấn");
             holder.car2TV.setText(nameCarInfo);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //handle item clicks, show items details (in bottom sheet)
-//                detailsBottomSheet(modelDriver);//here modelProduct contrains detailt of click product
-                    Intent intent = new Intent(context, DriverPhoneActivity.class);
 
-                    context.startActivity(intent);
-                }
-            });
         }
 
         @Override

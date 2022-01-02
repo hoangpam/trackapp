@@ -1,4 +1,4 @@
-package com.example.drivercar.model;
+package com.example.bookingcar.model;
 
 public class ModelInfomation {
     String AreaLocation,Latitude,Longitude,PhoneCus,PhoneDriver,Services,Status,cargoInfo,infomationId,nameCarInfo,nameLoGoInfo,nameLoInfo,productInfo,rankingTimeInfo,timestamp,uid;

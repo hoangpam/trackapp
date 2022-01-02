@@ -77,6 +77,36 @@
             android:padding="10dp"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/RLlocation1"
+        android:layout_marginLeft="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNoiThanh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nội thành"
+            android:backgroundTint="@color/orange1"
+            android:textSize="18dp"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNgoaiThanh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Ngoại thành"
+            android:backgroundTint="@color/orange1"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/textchip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:text="ABC"/>
+
+    </com.google.android.material.chip.ChipGroup>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/NameLoGo"
         android:layout_width="380dp"
@@ -205,6 +235,30 @@
             android:padding="10dp"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/serviceSwitch"
+        style="@style/MyCustomSwice"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:shadowColor="@color/itemchon"
+        android:text="Dịch vụ đóng gói"
+        android:textOff="Không "
+        android:textOn="Có"
+        android:textSize="18dp"
+        app:showText="true"
+        app:theme="@style/AppTheme" />
+    <TextView
+        android:id="@+id/serviceTv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:text="abc"/>
+
     <Button
         android:id="@+id/postUpBTN"
         android:layout_width="wrap_content"

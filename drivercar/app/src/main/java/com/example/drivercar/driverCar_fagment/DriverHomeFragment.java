@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +39,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.example.drivercar.R;
 import com.example.drivercar.activity.MainMenu;
 import com.example.drivercar.adapter_Driver.AdapterCars;
+import com.example.drivercar.adapter_Driver.AdapterFun;
 import com.example.drivercar.adapter_Driver.AdapterProductDriver;
 import com.example.drivercar.adapter_customer.AdapterInfomation;
 import com.example.drivercar.model.ModelCars;
@@ -51,6 +54,8 @@ import com.example.drivercar.model.ModelInfomation;
 import com.example.drivercar.object.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -70,7 +75,7 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
 
     private TextToSpeech tts;
     private RelativeLayout productRL,allproductRL;
-    RecyclerView recyclerView,recyclerView1,recyclerView2;
+
     private EditText searchProductEt;
     private ImageButton filterProductBtn,voiceProductBtn;
     private TextView filterProductTv;
@@ -93,8 +98,11 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
     TextToSpeech.OnInitListener listener ;
     int count = 0;
     SpeechRecognizer speechRecognizer;
-    private TextView nameTv, tabCompleTv, tabMySefTv,tabLoadingTv;
-    private Button AddDriverBtn;
+
+
+    private TabLayout TabTab;
+    private TabItem TabLoading,TagComple,TabMyseft;
+    private ViewPager viewPager;
 
     @Nullable
     @Override
@@ -102,10 +110,7 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
 
         View v = inflater.inflate(R.layout.fragment_driver_home,null);
 
-
         setHasOptionsMenu(true);
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         allproductRL =(RelativeLayout) v.findViewById(R.id.allproductRL);
         productRL =(RelativeLayout) v.findViewById(R.id.productRL);
@@ -115,14 +120,12 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
 
         searchProductEt =(EditText) v.findViewById(R.id.searchProductEt);
 
-
         // Fire off an intent to check if a TTS engine is installed
         Intent checkIntent = new Intent();
         checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkIntent, REQUEST_CODE_SPEECH_INPUT);
 
         //search
-
 
         searchProductEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -151,7 +154,6 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
             }
         });
 
-
         filterProductTv =(TextView) v.findViewById(R.id.filterProductTv);
 
         filterProductBtn =(ImageButton) v.findViewById(R.id.filterProductBtn);
@@ -170,7 +172,7 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
                                 filterProductTv.setText(selected);
                                 if(selected.equals("Tất cả loại xe")){
                                     //load all
-                                    loadAllCars();
+//                                    loadAllCars();
                                     adapterCars.getFilter().filter("");
                                 }
                                 else {
@@ -184,10 +186,6 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
         });
 
         voiceProductBtn =(ImageButton) v.findViewById(R.id.voiceProductBtn);
-        nameTv = (TextView) v.findViewById(R.id.nameTv);
-        tabCompleTv = (TextView) v.findViewById(R.id.tabCompleTv);
-        tabMySefTv = (TextView) v.findViewById(R.id.tabMySefTv);
-        tabLoadingTv = (TextView) v.findViewById(R.id.tabLoadingTv);
 
         voiceProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,66 +210,33 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
             }
         });
 
+        TabTab = (TabLayout) v.findViewById(R.id.TabTab);
+        TabLoading = (TabItem) v.findViewById(R.id.TabLoading);
+        TagComple = (TabItem) v.findViewById(R.id.TagComple);
+        TabMyseft = (TabItem) v.findViewById(R.id.TabMyseft);
+        viewPager = (ViewPager) v.findViewById(R.id.viewPager);
 
+        final AdapterFun adapter = new AdapterFun(getContext(),getParentFragmentManager(), TabTab.getTabCount());
+        viewPager.setAdapter(adapter);
 
-        recyclerView =(RecyclerView) v.findViewById(R.id.Recycle_menu);
-        recyclerView1 =(RecyclerView) v.findViewById(R.id.Recycle_menu2);
-        recyclerView2 =(RecyclerView) v.findViewById(R.id.Recycle_menu3);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(TabTab));
 
-
-
-        //thực hiện cho tag 3
-
-
-
-
-
-        tabCompleTv.setOnClickListener(new View.OnClickListener() {
+        TabTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View v) {
-                showCompleUI();
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
-                recyclerView2.setHasFixedSize(true);
-                recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
-                recyclerView2.setItemAnimator(new DefaultItemAnimator());
-                adapterCars = new AdapterCars(getContext(),carsList);
-                recyclerView2.setAdapter(adapterCars);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
-
-        tabMySefTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load orders
-                showMySefUI();
-                loadAllCars();
-                //thực hiện cho tag 1
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                adapterCars = new AdapterCars(getContext(),carsList);
-                recyclerView.setAdapter(adapterCars);
-
-            }
-        });
-
-        tabLoadingTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //load product
-                showLoadingUI();
-                loadAllInfomations();
-                //thực hiện cho tag 2
-                recyclerView1.setHasFixedSize(true);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-                recyclerView1.setItemAnimator(new DefaultItemAnimator());
-                adapterInfomation = new AdapterInfomation(getContext(),infomationsList);
-                recyclerView1.setAdapter(adapterInfomation);
-
-            }
-        });
-
 
 
         return v;
@@ -279,54 +244,9 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
 
 
 
-    private void showMySefUI() {
-        //show products ui and hide orders ui
-        tabLoadingTv.setTextColor(getResources().getColor(R.color.black));
-        tabLoadingTv.setBackgroundResource(R.drawable.shape_rect04);
-
-        tabCompleTv.setTextColor(getResources().getColor(R.color.black));
-        tabCompleTv.setBackgroundResource(R.drawable.shape_rect04);
-
-        tabMySefTv.setTextColor(getResources().getColor(R.color.white));
-        tabMySefTv.setBackgroundResource(R.drawable.shape_rect03);
-
-        recyclerView.setVisibility(View.VISIBLE );
-        recyclerView1.setVisibility(View.GONE);
-        recyclerView2.setVisibility(View.GONE);
-
-    }
-    private void showLoadingUI() {
-        //show orders ui and hide products ui
-        tabCompleTv.setTextColor(getResources().getColor(R.color.black));
-        tabCompleTv.setBackgroundResource(R.drawable.shape_rect04);
-
-        tabMySefTv.setTextColor(getResources().getColor(R.color.black));
-        tabMySefTv.setBackgroundResource(R.drawable.shape_rect04);
-
-        tabLoadingTv.setTextColor(getResources().getColor(R.color.white));
-        tabLoadingTv.setBackgroundResource(R.drawable.shape_rect03);
 
 
-        recyclerView1.setVisibility(View.VISIBLE );
-        recyclerView.setVisibility(View.GONE);
-        recyclerView2.setVisibility(View.GONE);
-    }
-    private void showCompleUI() {
-        //show orders ui and hide products ui
-        tabCompleTv.setTextColor(getResources().getColor(R.color.white));
-        tabCompleTv.setBackgroundResource(R.drawable.shape_rect03);
 
-        tabMySefTv.setTextColor(getResources().getColor(R.color.black));
-        tabMySefTv.setBackgroundResource(R.drawable.shape_rect04);
-
-        tabLoadingTv.setTextColor(getResources().getColor(R.color.black));
-        tabLoadingTv.setBackgroundResource(R.drawable.shape_rect04);
-
-
-        recyclerView1.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.GONE);
-        recyclerView2.setVisibility(View.INVISIBLE);
-    }
 
 
 
@@ -380,7 +300,7 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
 
         //get all product
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid()).child("Cars")
+        reference.child("Cars")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -394,16 +314,13 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
                                 ModelCars modelCars = ds.getValue(ModelCars.class);
                                 carsList.add(modelCars);
                             }
-//                            if(selected.equals(productTitle)){
-//                                ModelDriver modelDriver = ds.getValue(ModelDriver.class);
-//                                driverList.add(modelDriver);
-//                            }
+
 
                         }
-                        //setup adapter
+//                        //setup adapter
                         adapterCars  =new AdapterCars(getContext(),carsList);
-                        //set adapter
-                        recyclerView.setAdapter(adapterCars);
+//                        //set adapter
+//                        recyclerView.setAdapter(adapterCars);
                     }
 
                     @Override
@@ -413,61 +330,8 @@ public class DriverHomeFragment extends Fragment implements TextToSpeech.OnInitL
                 });
     }
 
-    private void loadAllCars() {
-        carsList = new ArrayList<>();
 
-        //get all product
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid()).child("Cars")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //before getting reset list
-                        carsList.clear();
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            ModelCars modelCars = ds.getValue(ModelCars.class);
-                            carsList.add(modelCars);
-                        }
-                        //setup adapter
-                        adapterCars =new AdapterCars(getContext(),carsList);
-                        //set adapter
-                        recyclerView.setAdapter(adapterCars);
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
-    private void loadAllInfomations() {
-        infomationsList = new ArrayList<>();
-
-        //get all product
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid()).child("Infomations")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //before getting reset list
-                        infomationsList.clear();
-                        for (DataSnapshot ds: snapshot.getChildren()){
-                            ModelInfomation modelInfomation = ds.getValue(ModelInfomation.class);
-                            infomationsList.add(modelInfomation);
-                        }
-                        //setup adapter
-                        adapterInfomation =new AdapterInfomation(getContext(),infomationsList);
-                        //set adapter
-                        recyclerView1.setAdapter(adapterCars);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
 
 
     @Override

@@ -54,5 +54,7 @@
         <item>@string/language_japanese_code</item>
         <item>@string/language_vietnamese_code</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 

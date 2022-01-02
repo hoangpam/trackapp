@@ -51,9 +51,12 @@
         android:theme="@style/Theme.Drivercar"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.DriverPhoneActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DriverInfomationActivity"
             android:exported="false" />
-        <activity android:name=".activity.ActivityAddInfoDriver" />
+        <activity android:name=".activity.EditInfoDriver" />
         <activity android:name=".activity.DriverDetalsActivity" />
         <activity android:name=".activity.Driverlogin" />
         <activity android:name=".bottomnavigation.DriverPanel_BottomNavigation" />

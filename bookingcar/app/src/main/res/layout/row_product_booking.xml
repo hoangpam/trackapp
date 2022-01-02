@@ -18,8 +18,8 @@
             android:id="@+id/decor_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giá khách hàng đề xuất"
-            android:textColor="@color/black"/>
+            android:text="Đơn hàng vừa đặt"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/negotiate"
@@ -98,8 +98,8 @@
                     android:id="@+id/nextIv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="4dp"
                     android:layout_toEndOf="@+id/locationGo"
                     android:background="@drawable/ic_next_gray" />
 
@@ -107,9 +107,9 @@
                     android:id="@+id/locationG"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_toEndOf="@+id/nextIv"
                     android:padding="5dp"
-                    android:layout_marginLeft="20dp"
                     android:text="Bà Rịa Vũ Tàu"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
@@ -136,9 +136,9 @@
                     android:id="@+id/TimeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/TimeIV"
-                    android:layout_marginLeft="20dp"
                     android:text="03/09/2021,10:10PM"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
@@ -164,23 +164,26 @@
                     android:id="@+id/weightTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/weightIV"
-                    android:layout_marginLeft="20dp"
                     android:text="2 tấn"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
+
                 <TextView
-                    android:id="@+id/weight2TV"
+                    android:id="@+id/cargoTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/weightTV"
-                    android:layout_marginLeft="20dp"
-                    android:text="2 tấn"
+                    android:text="phân"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/RLcar"
                 android:layout_width="match_parent"

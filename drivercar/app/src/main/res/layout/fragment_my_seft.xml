@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".driverCar_fagment.MySeftFragment">
+
+    <RelativeLayout
+        android:id="@+id/productRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+            <TextView
+            android:id="@+id/filterProductTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Hiển thị tất cả"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/AddDriverBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@+id/filterProductTv"
+            android:backgroundTint="@color/green"
+            android:text="Thêm xe" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Recycle_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/AddDriverBtn"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            tools:listitem="@layout/row_product_driver" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

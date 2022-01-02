@@ -5,68 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android" >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/toolbarRl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/shape_rect02"
                 android:padding="10dp"
                 tools:ignore="MissingConstraints">
 
-
-                <!--Tabs Products, Order -->
-                <LinearLayout
-                    android:id="@+id/ll_dieukhien"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/TabTab"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-
-                    android:layout_centerHorizontal="true"
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
                     android:background="@drawable/shape_rect03"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    >
 
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/Tabneworder"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
 
-                    <TextView
-                        android:id="@+id/tabLoadingTv"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_rect03"
-                        android:gravity="center"
                         android:text="Đơn mới"
-                        android:textColor="@color/black"
-                        android:textSize="15dp" />
 
-                    <TextView
-                        android:id="@+id/tabCompleTv"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_rect04"
-                        android:gravity="center"
-                        android:text="Đang chạy"
-                        android:textColor="@color/black"
-                        android:textSize="15dp" />
+                        />
 
-                    <TextView
-                        android:id="@+id/tabMySefTv"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Đã qua"
-                        android:textColor="@color/black"
-                        android:textSize="15dp" />
-                </LinearLayout>
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/Tabloadingrun"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Đang chạy" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/Tabpassed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đã qua" />
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+
             </RelativeLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/productRL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbarRl"
+            >
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="NotSibling"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="1dp" />
+        </RelativeLayout>
+
 </RelativeLayout>

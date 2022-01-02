@@ -56,11 +56,11 @@ public class Customerlogin extends AppCompatActivity {
     String Email;
     ProgressDialog progressDialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customerlogin);
+
 
         try {
 

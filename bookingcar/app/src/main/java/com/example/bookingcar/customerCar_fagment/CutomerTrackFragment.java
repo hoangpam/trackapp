@@ -27,15 +27,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bookingcar.R;
+import com.example.bookingcar.object.Constants;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -49,11 +54,15 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -129,10 +138,14 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
 
     ImageButton gpsBTN;
 
+    private ImageButton backBN;
     private TextInputLayout NameLocation,NameLoGo,RankingTime,Product,Cargo,NameCar;
     private TextInputEditText NamelocationTET,NameLoGoTET,ProductTET,CargoTET,NameCarTET,RankingTimeTET;
-    private String namelocationTET,nameLoGoTET,productTET,cargoTET,nameCarTET,rankingTimeTET;
+    private String namelocationTET,nameLoGoTET,productTET,cargoTET,nameCarTET,rankingTimeTET,Textchip,ServiceTv;
     private Button postUpBTN;
+    private Chip chipNoiThanh,chipNgoaiThanh;
+    private TextView textchip,serviceTv;
+    private SwitchCompat serviceSwitch;
 
     FirebaseAuth Fauth;
     DatabaseReference data;
@@ -164,6 +177,12 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         permissionsToRequest = findUnAskedPermissions(permissions);
         gpsBTN = (ImageButton) v.findViewById(R.id.gpsBtn);
+        chipNoiThanh = (Chip) v.findViewById(R.id.chipNoiThanh);
+        chipNgoaiThanh = (Chip) v.findViewById(R.id.chipNgoaiThanh);
+        textchip = (TextView) v.findViewById(R.id.textchip);
+        serviceSwitch = (SwitchCompat) v.findViewById(R.id.serviceSwitch);
+        serviceTv = (TextView) v.findViewById(R.id.serviceTv);
+        backBN = v.findViewById(R.id.backBN);
         ButterKnife.bind(getActivity());
         initLocation();
         restoreValuesFromBundle(savedInstanceState);
@@ -172,6 +191,18 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
 
         postUpBTN = (Button)  v.findViewById(R.id.postUpBTN);
 
+        backBN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        NameCarTET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NameCarDialog();
+            }
+        });
 
         postUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,8 +211,36 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
             }
         });
 
+        chipNgoaiThanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textchip.setText("2000000");
+            }
+        });
+
+        chipNoiThanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textchip.setText("1000000");
+            }
+        });
+
+        serviceSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    serviceTv.setText("300000");
+                }else{
+                    serviceTv.setText("0");
+                }
+            }
+        });
+
         return v;
     }
+
+
     private void inputData() {
 
         namelocationTET = NamelocationTET.getText().toString().trim();
@@ -190,7 +249,11 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         cargoTET = CargoTET.getText().toString().trim();
         nameCarTET = NameCarTET.getText().toString().trim();
         rankingTimeTET = RankingTimeTET.getText().toString().trim();
+        Textchip = textchip.getText().toString().trim();
+        ServiceTv = serviceTv.getText().toString().trim();
 
+        serviceTv.setError("");
+        textchip.setError("");
         NamelocationTET.setError("");
         NameLoGoTET.setError("");
         ProductTET.setError("");
@@ -228,6 +291,16 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
             NameCarTET.setError("Loại xe muốn đặt là cần thiết ..");
             return;//don't proceed further
         }
+        if(TextUtils.isEmpty(Textchip)){
+            Toasty.error(getActivity(), "Chọn khu vực vận chuyển ..", Toast.LENGTH_SHORT, true).show();
+            textchip.setError("Khu vực vận chuyển là cần thiết ..");
+            return;//don't proceed further
+        }
+        if(TextUtils.isEmpty(ServiceTv)){
+            Toasty.error(getActivity(), "Chọn dịch vụ đóng goi..", Toast.LENGTH_SHORT, true).show();
+            serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
+            return;//don't proceed further
+        }
         addProduct();
     }
 
@@ -238,37 +311,80 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         progressDialog.setMessage("Tiến hành đăng thông tin ...");
         progressDialog.show();
 
-        String timestamp = "" + System.currentTimeMillis();
-        HashMap<String ,Object> hashMap = new HashMap<>();
-        hashMap.put("infomationId",""+timestamp);
-        hashMap.put("timestamp",""+timestamp);
-        hashMap.put("uid",""+Fauth.getUid());
-        hashMap.put("nameLoInfo",""+namelocationTET);
-        hashMap.put("nameLoGoInfo",""+nameLoGoTET);
-        hashMap.put("productInfo",""+productTET);
-        hashMap.put("cargoInfo",""+cargoTET);
-        hashMap.put("nameCarInfo",""+nameCarTET);
-        hashMap.put("rankingTimeInfo",""+rankingTimeTET);
-        hashMap.put("Latitude","0.0");
-        hashMap.put("Longitude","0.0");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.orderByChild("UID").equalTo(Fauth.getUid())
+                .addValueEventListener( new ValueEventListener(){
 
-        data = FirebaseDatabase.getInstance().getReference("Users");
-        data.child(Fauth.getUid()).child("Infomations").child(timestamp).setValue(hashMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(@NonNull Void unused) {
-                        progressDialog.dismiss();
-                        Toasty.success(getActivity(), "Đã thêm thông tin thành công...!", Toast.LENGTH_SHORT, true).show();
-                        clearData();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds: snapshot.getChildren()){
+                            String phone =""+ds.child("MobileNo").getValue();
+
+                            String timestamp = "" + System.currentTimeMillis();
+                            HashMap<String ,Object> hashMap = new HashMap<>();
+                            hashMap.put("infomationId",""+timestamp);
+                            hashMap.put("timestamp",""+timestamp);
+                            hashMap.put("uid",""+Fauth.getUid());
+                            hashMap.put("nameLoInfo",""+namelocationTET);
+                            hashMap.put("nameLoGoInfo",""+nameLoGoTET);
+                            hashMap.put("productInfo",""+productTET);
+                            hashMap.put("cargoInfo",""+cargoTET);
+                            hashMap.put("nameCarInfo",""+nameCarTET);
+                            hashMap.put("rankingTimeInfo",""+rankingTimeTET);
+                            hashMap.put("Latitude","0.0");
+                            hashMap.put("Longitude","0.0");
+                            hashMap.put("AreaLocation",""+Textchip);
+                            hashMap.put("Services",""+ServiceTv);
+                            hashMap.put("Status","Chưa nhân đơn");
+                            hashMap.put("PhoneCus",""+phone);
+                            hashMap.put("PhoneDriver","");
+
+
+                            data = FirebaseDatabase.getInstance().getReference("Users");
+                            data.child("Infomations").child(timestamp).setValue(hashMap)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(@NonNull Void unused) {
+                                            progressDialog.dismiss();
+                                            Toasty.success(getActivity(), "Đã thêm thông tin thành công...!", Toast.LENGTH_SHORT, true).show();
+                                            clearData();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    //failed adding to db
+                                    progressDialog.dismiss();
+                                }
+                            });
+
+
+
+                        }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        //failed adding to db
-                        progressDialog.dismiss();
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
 
+
+
+    }
+    //chọn tên thể loại
+    private void NameCarDialog(){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("Tên loại xe")
+                .setItems(Constants.vehicleTypeName, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //get picked vehicleTypeName
+                        String vehicleTypeName = Constants.vehicleTypeName[which];
+                        //set picked vehicleTypeName
+                        NameCarTET.setText(vehicleTypeName);
+                    }
+                })
+                .show();
     }
     private void clearData(){
 
@@ -278,6 +394,8 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         CargoTET.setText("");
         NameCarTET.setText("'");
         RankingTimeTET.setText("");
+        textchip.setText("");
+        serviceTv.setText("");
     }
 
     private void initLocation() {
