@@ -24,6 +24,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,12 +35,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bookingcar.R;
+import com.example.bookingcar.bottomnavigation.BottomNavigationBehavior;
 import com.example.bookingcar.object.Constants;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -54,6 +57,7 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -141,12 +145,12 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
     private ImageButton backBN;
     private TextInputLayout NameLocation,NameLoGo,RankingTime,Product,Cargo,NameCar;
     private TextInputEditText NamelocationTET,NameLoGoTET,ProductTET,CargoTET,NameCarTET,RankingTimeTET;
-    private String namelocationTET,nameLoGoTET,productTET,cargoTET,nameCarTET,rankingTimeTET,Textchip,ServiceTv;
+    private String namelocationTET,nameLoGoTET,productTET,cargoTET,nameCarTET,rankingTimeTET,Textchip,ServiceTv,Service1Tv,Service2Tv,Service3Tv,Service4Tv;
     private Button postUpBTN;
     private Chip chipNoiThanh,chipNgoaiThanh;
-    private TextView textchip,serviceTv;
-    private SwitchCompat serviceSwitch;
-
+    private TextView textchip,serviceTv,service1Tv,service2Tv,service3Tv,service4Tv;
+    private SwitchCompat serviceSwitch,serviceSwitch1,serviceSwitch2,serviceSwitch3,serviceSwitch4;
+    Fragment fragmenthientai;
     FirebaseAuth Fauth;
     DatabaseReference data;
     private ProgressDialog progressDialog;
@@ -181,7 +185,15 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         chipNgoaiThanh = (Chip) v.findViewById(R.id.chipNgoaiThanh);
         textchip = (TextView) v.findViewById(R.id.textchip);
         serviceSwitch = (SwitchCompat) v.findViewById(R.id.serviceSwitch);
+        serviceSwitch1 = (SwitchCompat) v.findViewById(R.id.serviceSwitch1);
+        serviceSwitch2 = (SwitchCompat) v.findViewById(R.id.serviceSwitch2);
+        serviceSwitch3 = (SwitchCompat) v.findViewById(R.id.serviceSwitch3);
+        serviceSwitch4 = (SwitchCompat) v.findViewById(R.id.serviceSwitch4);
         serviceTv = (TextView) v.findViewById(R.id.serviceTv);
+        service1Tv = (TextView) v.findViewById(R.id.service1Tv);
+        service2Tv = (TextView) v.findViewById(R.id.service2Tv);
+        service3Tv = (TextView) v.findViewById(R.id.service3Tv);
+        service4Tv = (TextView) v.findViewById(R.id.service4Tv);
         backBN = v.findViewById(R.id.backBN);
         ButterKnife.bind(getActivity());
         initLocation();
@@ -190,6 +202,8 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         Fauth = FirebaseAuth.getInstance();
 
         postUpBTN = (Button)  v.findViewById(R.id.postUpBTN);
+
+
 
         backBN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,15 +244,61 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b)
                 {
-                    serviceTv.setText("300000");
+                    serviceTv.setText("100000");
                 }else{
                     serviceTv.setText("0");
+                }
+            }
+        });
+        serviceSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    service1Tv.setText("300000");
+                }else{
+                    service1Tv.setText("0");
+                }
+            }
+        });
+
+        serviceSwitch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    service2Tv.setText("400000");
+                }else{
+                    service2Tv.setText("0");
+                }
+            }
+        });
+        serviceSwitch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    service3Tv.setText("600000");
+                }else{
+                    service3Tv.setText("0");
+                }
+            }
+        });
+        serviceSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    service4Tv.setText("100000");
+                }else{
+                    service4Tv.setText("0");
                 }
             }
         });
 
         return v;
     }
+
 
 
     private void inputData() {
@@ -251,6 +311,10 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         rankingTimeTET = RankingTimeTET.getText().toString().trim();
         Textchip = textchip.getText().toString().trim();
         ServiceTv = serviceTv.getText().toString().trim();
+        Service1Tv = service1Tv.getText().toString().trim();
+        Service2Tv = service2Tv.getText().toString().trim();
+        Service3Tv = service3Tv.getText().toString().trim();
+        Service4Tv = service4Tv.getText().toString().trim();
 
         serviceTv.setError("");
         textchip.setError("");
@@ -301,6 +365,26 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
             serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
             return;//don't proceed further
         }
+        if(TextUtils.isEmpty(Service1Tv)){
+            Toasty.error(getActivity(), "Chọn dịch vụ khiêng hàng..", Toast.LENGTH_SHORT, true).show();
+            serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
+            return;//don't proceed further
+        }
+        if(TextUtils.isEmpty(Service2Tv)){
+            Toasty.error(getActivity(), "Chọn dịch vụ vệ sinh..", Toast.LENGTH_SHORT, true).show();
+            serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
+            return;//don't proceed further
+        }
+        if(TextUtils.isEmpty(Service3Tv)){
+            Toasty.error(getActivity(), "Chọn dịch vụ bảo hiểm hàng hoá..", Toast.LENGTH_SHORT, true).show();
+            serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
+            return;//don't proceed further
+        }
+        if(TextUtils.isEmpty(Service4Tv)){
+            Toasty.error(getActivity(), "Chọn dịch vụ trọn gói..", Toast.LENGTH_SHORT, true).show();
+            serviceTv.setError("Dịch vụ đóng goi là cần thiết ..");
+            return;//don't proceed further
+        }
         addProduct();
     }
 
@@ -335,6 +419,10 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
                             hashMap.put("Longitude","0.0");
                             hashMap.put("AreaLocation",""+Textchip);
                             hashMap.put("Services",""+ServiceTv);
+                            hashMap.put("Services1",""+Service1Tv);
+                            hashMap.put("Services2",""+Service2Tv);
+                            hashMap.put("Services3",""+Service3Tv);
+                            hashMap.put("Services4",""+Service4Tv);
                             hashMap.put("Status","Chưa nhân đơn");
                             hashMap.put("PhoneCus",""+phone);
                             hashMap.put("PhoneDriver","");
@@ -396,6 +484,11 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         RankingTimeTET.setText("");
         textchip.setText("");
         serviceTv.setText("");
+        service1Tv.setText("");
+        service2Tv.setText("");
+        service3Tv.setText("");
+        service4Tv.setText("");
+
     }
 
     private void initLocation() {

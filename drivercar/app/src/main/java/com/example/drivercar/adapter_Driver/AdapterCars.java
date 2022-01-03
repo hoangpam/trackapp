@@ -96,6 +96,7 @@ public class AdapterCars extends RecyclerView.Adapter<AdapterCars.HolderCars> im
         String sizecar = modelCars.getSizeCar();
         String status = modelCars.getStatus();
         String id = modelCars.getCarId();
+        String tam = modelCars.getTimestamp();
 
         //set data
         holder.namecarTv.setText(vehicletypename);
@@ -133,8 +134,7 @@ public class AdapterCars extends RecyclerView.Adapter<AdapterCars.HolderCars> im
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //delete
-                                deleteDriver(id);
-
+                                deleteDriver(tam);
                             }
                         })
                         .setNegativeButton("Không xoá", new DialogInterface.OnClickListener() {
@@ -247,8 +247,8 @@ public class AdapterCars extends RecyclerView.Adapter<AdapterCars.HolderCars> im
     private void deleteDriver(String id) {
         //delete product using its id
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Driver");
-        reference.child(firebaseAuth.getUid()).child("Cars").child(id).removeValue()
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child("Cars").child(id).removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

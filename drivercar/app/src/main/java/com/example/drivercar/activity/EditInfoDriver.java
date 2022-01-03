@@ -92,38 +92,61 @@ public class EditInfoDriver extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    inputData();
-                    String timestamp = ""+System.currentTimeMillis();
-                    HashMap<String , String> hashMap = new HashMap<>();
-                    hashMap.put("carId",""+timestamp);
-                    hashMap.put("City", ""+CityAddress);
-                    hashMap.put("CompleteAddress", ""+CompleteAddress);
-                    hashMap.put("Latitude", "0.0");
-                    hashMap.put("Longitude", "0.0" );
-                    hashMap.put("Timestamp",""+timestamp);
-                    hashMap.put("VehicleTypeName",""+nameCar);
-                    hashMap.put("VehicleTonnage",""+tonnageCar);
-                    hashMap.put("SizeCar",""+sizeCar);
-                    hashMap.put("License_Plates",""+License_plate);
-                    hashMap.put("Status","Đang chờ phê duyệt");
-                    hashMap.put("Plate",""+CityAddress);
-                    hashMap.put("uid",""+firebaseAuth.getUid());
-                    databaseReference.child("Cars")
-                            .child(timestamp)
-                            .setValue(hashMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    DatabaseReference reference = FirebaseDatabase.getInstance()
+                            .getReference("Users");
+                    reference.child("Cars").orderByChild("uid").equalTo(firebaseAuth.getUid())
+                            .addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onSuccess(@NonNull Void unused) {
-                                    Toasty.success(EditInfoDriver.this, "Đã đăng thành công", Toast.LENGTH_SHORT, true).show();
-                                    clearData();
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    //before getting reset list
+                                    for(DataSnapshot ds: snapshot.getChildren()){
+
+                                        String CompleteAddress = ""+ds.child("CompleteAddress").getValue();
+                                        String carId = ""+ds.child("carId").getValue();
+                                        inputData();
+
+                                        HashMap<String , String> hashMap = new HashMap<>();
+                                        hashMap.put("carId",""+carId);
+                                        hashMap.put("City", ""+CityAddress);
+                                        hashMap.put("CompleteAddress", ""+CompleteAddress);
+                                        hashMap.put("Latitude", "0.0");
+                                        hashMap.put("Longitude", "0.0" );
+                                        hashMap.put("Timestamp",""+carId);
+                                        hashMap.put("VehicleTypeName",""+nameCar);
+                                        hashMap.put("VehicleTonnage",""+tonnageCar);
+                                        hashMap.put("SizeCar",""+sizeCar);
+                                        hashMap.put("License_Plates",""+License_plate);
+                                        hashMap.put("Status","Đang chờ phê duyệt");
+                                        hashMap.put("Plate",""+CityAddress);
+                                        hashMap.put("uid",""+firebaseAuth.getUid());
+                                        databaseReference.child("Cars")
+                                                .child(carId)
+                                                .setValue(hashMap)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(@NonNull Void unused) {
+                                                        Toasty.success(EditInfoDriver.this, "Đã sửa thành công", Toast.LENGTH_SHORT, true).show();
+                                                        clearData();
+
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //failed adding to db
+                                                Toasty.error(EditInfoDriver.this, ""+"\n"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
+                                            }
+                                        });
+                                    }
+
+
                                 }
-                            }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            //failed adding to db
-                            Toasty.error(EditInfoDriver.this, ""+"\n"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
-                        }
-                    });
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                 }catch (Exception e)
                 {
                     Toasty.error(EditInfoDriver.this, ""+"\n"+e.getMessage(), Toast.LENGTH_SHORT, true).show();

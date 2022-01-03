@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.drivercar.driverCar_fagment.CompleFragment;
-import com.example.drivercar.driverCar_fagment.LoadingFragment;
-import com.example.drivercar.driverCar_fagment.MySeftFragment;
+import com.example.drivercar.driverCarPanel.LoadingFragment;
+import com.example.drivercar.driverCarPanel.MySeftFragment;
 
 public class AdapterFun extends FragmentPagerAdapter {
     private Context myContext;

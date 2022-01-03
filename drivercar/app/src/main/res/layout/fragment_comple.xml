@@ -3,8 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".driverCar_fagment.CompleFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".driverCarPanel.LoadingFragment">
 
-
-
+    <RelativeLayout
+        android:id="@+id/productRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarRl"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Recycle_menu2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            tools:listitem="@layout/row_product_booking" />
+    </RelativeLayout>
 </FrameLayout>

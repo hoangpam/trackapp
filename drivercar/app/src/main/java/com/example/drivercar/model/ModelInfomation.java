@@ -1,18 +1,22 @@
 package com.example.drivercar.model;
 
 public class ModelInfomation {
-    String AreaLocation,Latitude,Longitude,PhoneCus,PhoneDriver,Services,Status,cargoInfo,infomationId,nameCarInfo,nameLoGoInfo,nameLoInfo,productInfo,rankingTimeInfo,timestamp,uid;
+    String AreaLocation,Latitude,Longitude,PhoneCus,PhoneDriver,Services,Services1,Services2,Services3,Services4,Status,cargoInfo,infomationId,nameCarInfo,nameLoGoInfo,nameLoInfo,productInfo,rankingTimeInfo,timestamp,uid;
 
     public ModelInfomation() {
     }
 
-    public ModelInfomation(String areaLocation, String latitude, String longitude, String phoneCus, String phoneDriver, String services, String status, String cargoInfo, String infomationId, String nameCarInfo, String nameLoGoInfo, String nameLoInfo, String productInfo, String rankingTimeInfo, String timestamp, String uid) {
+    public ModelInfomation(String areaLocation, String latitude, String longitude, String phoneCus, String phoneDriver, String services, String services1, String services2, String services3, String services4, String status, String cargoInfo, String infomationId, String nameCarInfo, String nameLoGoInfo, String nameLoInfo, String productInfo, String rankingTimeInfo, String timestamp, String uid) {
         AreaLocation = areaLocation;
         Latitude = latitude;
         Longitude = longitude;
         PhoneCus = phoneCus;
         PhoneDriver = phoneDriver;
         Services = services;
+        Services1 = services1;
+        Services2 = services2;
+        Services3 = services3;
+        Services4 = services4;
         Status = status;
         this.cargoInfo = cargoInfo;
         this.infomationId = infomationId;
@@ -71,6 +75,38 @@ public class ModelInfomation {
 
     public void setServices(String services) {
         Services = services;
+    }
+
+    public String getServices1() {
+        return Services1;
+    }
+
+    public void setServices1(String services1) {
+        Services1 = services1;
+    }
+
+    public String getServices2() {
+        return Services2;
+    }
+
+    public void setServices2(String services2) {
+        Services2 = services2;
+    }
+
+    public String getServices3() {
+        return Services3;
+    }
+
+    public void setServices3(String services3) {
+        Services3 = services3;
+    }
+
+    public String getServices4() {
+        return Services4;
+    }
+
+    public void setServices4(String services4) {
+        Services4 = services4;
     }
 
     public String getStatus() {

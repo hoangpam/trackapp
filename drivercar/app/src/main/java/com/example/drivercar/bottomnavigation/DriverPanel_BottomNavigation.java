@@ -4,12 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,12 +18,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.example.drivercar.R;
 import com.example.drivercar.activity.MainMenu;
-import com.example.drivercar.driverCar_fagment.DriverHomeFragment;
+import com.example.drivercar.driverCarPanel.DriverHomeFragment;
 import com.example.drivercar.driverCar_fagment.DriverOrderFragment;
-import com.example.drivercar.driverCar_fagment.DriverPendingOrderFragment;
-import com.example.drivercar.driverCar_fagment.DriverProfileFragment;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.drivercar.driverCarPanel.DriverPendingOrderFragment;
+import com.example.drivercar.driverCarPanel.DriverProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,9 +30,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
 
 public class DriverPanel_BottomNavigation extends AppCompatActivity {
     Fragment fragmenthientai;

@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.drivercar.driverCar_fagment.ApCarsFragment;
-import com.example.drivercar.driverCar_fagment.CompleFragment;
-import com.example.drivercar.driverCar_fagment.LoadingFragment;
-import com.example.drivercar.driverCar_fagment.MySeftFragment;
+import com.example.drivercar.driverCarPanel.LoadingFragment;
 import com.example.drivercar.driverCar_fagment.QuotedFragment;
 
 public class AdapterFunPenOrder extends FragmentPagerAdapter {
