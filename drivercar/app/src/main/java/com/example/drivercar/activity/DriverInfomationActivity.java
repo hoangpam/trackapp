@@ -69,7 +69,9 @@ public class DriverInfomationActivity extends AppCompatActivity {
     //image pick constants
     //hằng số chọn hình ảnh
     private static final int IMAGE_PICK_GALLERY_CODE = 400;
+
     private static final int IMAGE_PICK_CAMERA_CODE = 500;
+
     //khởi tạo dành cho GPS
     //định vị
     //chọn khoang vùng
@@ -251,7 +253,7 @@ public class DriverInfomationActivity extends AppCompatActivity {
                         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         progressDialog.setProgress(0);
                         progressDialog.setTitle("\uD83E\uDD84 Tình hình mạng yếu");
-                        progressDialog.setMessage("Đang đăng ký và tải hình ảnh đại diện lên, vui lòng đợi tí....");
+                        progressDialog.setMessage("Đang đăng ký và tải hình ảnh chứng từ lên\n vui lòng đợi tí....");
                         progressDialog.show();
 
                         ref = FirebaseStorage.getInstance().getReference(filePathAndName);
@@ -563,7 +565,6 @@ public class DriverInfomationActivity extends AppCompatActivity {
     }
 
 
-
     public boolean isValid() {
         TonnageCar.setErrorEnabled(false);
         TonnageCar.setError("");
@@ -670,21 +671,20 @@ public class DriverInfomationActivity extends AppCompatActivity {
         contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp_Image Description");//Temp_Image Description
 
         image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-        image_uri1 = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-        image_uri2 = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri1);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri2);
         startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
+
+
 
     private void pickFromGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");//image
         startActivityForResult(intent, IMAGE_PICK_GALLERY_CODE);
     }
+
     private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
@@ -729,6 +729,7 @@ public class DriverInfomationActivity extends AppCompatActivity {
                         //sự cho phép được phép cấp quyền
                         pickFromCamera();
 
+
                     }
                     else {
                         //permission denied
@@ -747,6 +748,7 @@ public class DriverInfomationActivity extends AppCompatActivity {
                         //permission allowed
                         //sự cho phép được phép cấp quyền
                         pickFromGallery();
+
                     }
                     else {
                         //permission denied
@@ -754,7 +756,6 @@ public class DriverInfomationActivity extends AppCompatActivity {
                         //location permission is necessary
                         Toasty.success(this, "Sự cho phép bộ nhớ là cần thiết.....!", Toast.LENGTH_SHORT, true).show();
 
-//                        Toast.makeText(this,"Sự cho phép bộ nhớ là cần thiết.....",Toast.LENGTH_SHORT).show();
                     }
                 }
             }break;
@@ -772,36 +773,26 @@ public class DriverInfomationActivity extends AppCompatActivity {
             if (requestCode == IMAGE_PICK_GALLERY_CODE) {
                 //get picked image
                 image_uri = data.getData();
+                ((ImageView) findViewById(R.id.cmndmtIv)).setImageURI(image_uri);
+                //set to imageview
+                cmndmtIv.setImageURI(image_uri);
                 image_uri1 = data.getData();
+                ((ImageView) findViewById(R.id.cmndmsIv)).setImageURI(image_uri1);
+                cmndmsIv.setImageURI(image_uri1);
                 image_uri2 = data.getData();
-                ((ImageView) findViewById(R.id.cmndmtIv)).setImageURI(image_uri);
-//                Toasty.success(this, "Đã chọn hình thành công!!", Toast.LENGTH_SHORT, true).show();
-                ((ImageView) findViewById(R.id.cmndmsIv)).setImageURI(image_uri1);
-//                Toasty.success(this, "Đã chọn hình thành công!!", Toast.LENGTH_SHORT, true).show();
                 ((ImageView) findViewById(R.id.gplxIv)).setImageURI(image_uri2);
-//                Toasty.success(this, "Đã chọn hình thành công!!", Toast.LENGTH_SHORT, true).show();
-//                Toast.makeText(this, "Đã chọn hình thành công!", Toast.LENGTH_SHORT).show();
-                //set to imageview
-                cmndmtIv.setImageURI(image_uri);
-                cmndmsIv.setImageURI(image_uri1);
                 gplxIv.setImageURI(image_uri2);
-
-
-            } else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
-                //set to imageview
-
-                cmndmtIv.setImageURI(image_uri);
-                cmndmsIv.setImageURI(image_uri1);
-                gplxIv.setImageURI(image_uri2);
-
-                ((ImageView) findViewById(R.id.cmndmtIv)).setImageURI(image_uri);
-//                Toasty.success(this, "Đã chụp hình thành công!!", Toast.LENGTH_SHORT, true).show();
-                ((ImageView) findViewById(R.id.cmndmsIv)).setImageURI(image_uri1);
-//                Toasty.success(this, "Đã chụp hình thành công!!", Toast.LENGTH_SHORT, true).show();
-                ((ImageView) findViewById(R.id.gplxIv)).setImageURI(image_uri2);
-//                Toasty.success(this, "Đã chụp hình thành công!!", Toast.LENGTH_SHORT, true).show();
-
             }
+            else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
+                //set to imageview
+                cmndmtIv.setImageURI(image_uri);
+                ((ImageView) findViewById(R.id.cmndmtIv)).setImageURI(image_uri);
+                cmndmsIv.setImageURI(image_uri1);
+                ((ImageView) findViewById(R.id.cmndmsIv)).setImageURI(image_uri1);
+                gplxIv.setImageURI(image_uri2);
+                ((ImageView) findViewById(R.id.gplxIv)).setImageURI(image_uri2);
+            }
+
         }
 
         super.onActivityResult(requestCode, resultCode, data);

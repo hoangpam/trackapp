@@ -1,5 +1,6 @@
 package com.example.drivercar.driverCarPanel;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -37,23 +38,20 @@ public class LoadingFragment extends Fragment {
     private AdapterInfomation adapterInfomation;
     FirebaseAuth firebaseAuth;
     RecyclerView Recycle_menu2;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+
         View v = inflater.inflate(R.layout.fragment_loading, null);
         setHasOptionsMenu(true);
+
         firebaseAuth = FirebaseAuth.getInstance();
         Recycle_menu2 = v.findViewById(R.id.Recycle_menu2);
-        loadAllCars();
-        Recycle_menu2.setHasFixedSize(true);
-        Recycle_menu2.setLayoutManager(new LinearLayoutManager(getContext()));
-        Recycle_menu2.setItemAnimator(new DefaultItemAnimator());
-        adapterInfomation = new AdapterInfomation(getContext(),infomationArrayList);
-        Recycle_menu2.setAdapter(adapterInfomation);
-        return v;
-    }
-    private void loadAllCars() {
+
         infomationArrayList = new ArrayList<>();
         String timestamp = ""+System.currentTimeMillis();
         //get all product
@@ -61,29 +59,37 @@ public class LoadingFragment extends Fragment {
                 .getReference("Users");
 
 
-         reference.child("Infomations")
-           .addValueEventListener(new ValueEventListener() {
-              @Override
-              public void onDataChange(@NonNull DataSnapshot snapshot) {
-                  if(snapshot.exists()){
-                   //before getting reset list
-                  infomationArrayList.clear();
-                  for (DataSnapshot ds:snapshot.getChildren()){
-                       ModelInfomation modelInfomation = ds.getValue(ModelInfomation.class);
-                        infomationArrayList.add(modelInfomation);
-                  }
+        reference.child("Infomations")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            //before getting reset list
+                            infomationArrayList.clear();
+                            for (DataSnapshot ds:snapshot.getChildren()){
+                                ModelInfomation modelInfomation = ds.getValue(ModelInfomation.class);
+                                infomationArrayList.add(modelInfomation);
+                            }
 
-                  //setup adapter
-                  adapterInfomation =new AdapterInfomation(getContext(),infomationArrayList);
-                   //set adapter
-                  Recycle_menu2.setAdapter(adapterInfomation);
-                  }
-              }
-              @Override
-              public void onCancelled(@NonNull DatabaseError error) {
-              }
-           });
+                            //setup adapter
+                            adapterInfomation =new AdapterInfomation(getContext(),infomationArrayList);
+                            //set adapter
+                            Recycle_menu2.setAdapter(adapterInfomation);
 
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+        Recycle_menu2.setHasFixedSize(true);
+        Recycle_menu2.setLayoutManager(new LinearLayoutManager(getContext()));
+        Recycle_menu2.setItemAnimator(new DefaultItemAnimator());
+        adapterInfomation = new AdapterInfomation(getContext(),infomationArrayList);
+        Recycle_menu2.setAdapter(adapterInfomation);
+        return v;
     }
+
 
     }

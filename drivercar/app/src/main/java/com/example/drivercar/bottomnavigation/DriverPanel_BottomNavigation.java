@@ -36,12 +36,10 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
     FrameLayout layoutHost;
 
     RelativeLayout relativeLayout;
-    private TextView nameTv, tabProductsTv, tabOrderTv;
-    private ImageButton logoutbtn;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     CircularImageView profileIv;
-    String RandomUID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,26 +65,8 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
         progressDialog.setTitle("Tình hình mạng yếu");
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth = FirebaseAuth.getInstance();
-//        checkUser();
-//        logoutbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //make offline
-//                //sign out
-//                //go to login activity
-//                makeMeOffline();
-//            }
-//        });
-
-
-
-
-
 
     }
-
-
 
 
 
@@ -132,46 +112,7 @@ public class DriverPanel_BottomNavigation extends AppCompatActivity {
         transaction.commit();
     }
 
-    private void checkUser() {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user == null)
-        {
-            startActivity(new Intent(DriverPanel_BottomNavigation.this, MainMenu.class));
-            finish();
-        }
-        else {
-            loadMyInfo();
-        }
-    }
 
-    private void loadMyInfo() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.orderByChild("UID").equalTo(firebaseAuth.getUid())
-                .addValueEventListener( new ValueEventListener(){
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot ds: snapshot.getChildren()){
-                            String fname =""+ds.child("FirstName").getValue();
-                            String name = ""+ds.child("LastName").getValue();
-
-                            String email = ""+ ds.child("EmailId").getValue();
-                            String profile = ""+ds.child("ImageURL").getValue();
-
-
-
-
-
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
 
 
 

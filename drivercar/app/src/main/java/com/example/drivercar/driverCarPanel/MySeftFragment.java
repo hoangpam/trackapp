@@ -1,5 +1,6 @@
 package com.example.drivercar.driverCarPanel;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -36,10 +37,15 @@ public class MySeftFragment extends Fragment {
     private AdapterCars adapterCars;
     FirebaseAuth firebaseAuth;
     private Button AddDriverBtn;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View v = inflater.inflate(R.layout.fragment_my_seft,null);
+
         // Inflate the layout for this fragment
         firebaseAuth = FirebaseAuth.getInstance();
         Recycle_menu = (RecyclerView) v.findViewById(R.id.Recycle_menu);
@@ -51,16 +57,7 @@ public class MySeftFragment extends Fragment {
                 startActivity(a);
             }
         });
-        loadAllCars();
-        Recycle_menu.setHasFixedSize(true);
-        Recycle_menu.setLayoutManager(new LinearLayoutManager(getContext()));
-        Recycle_menu.setItemAnimator(new DefaultItemAnimator());
-        adapterCars = new AdapterCars(getContext(),carsList);
-        Recycle_menu.setAdapter(adapterCars);
-        return v;
-    }
 
-    private void loadAllCars() {
         carsList = new ArrayList<>();
 
         //get all product
@@ -80,6 +77,7 @@ public class MySeftFragment extends Fragment {
                         adapterCars =new AdapterCars(getContext(),carsList);
                         //set adapter
                         Recycle_menu.setAdapter(adapterCars);
+
                     }
 
                     @Override
@@ -87,5 +85,15 @@ public class MySeftFragment extends Fragment {
 
                     }
                 });
+
+        Recycle_menu.setHasFixedSize(true);
+        Recycle_menu.setLayoutManager(new LinearLayoutManager(getContext()));
+        Recycle_menu.setItemAnimator(new DefaultItemAnimator());
+        adapterCars = new AdapterCars(getContext(),carsList);
+        Recycle_menu.setAdapter(adapterCars);
+
+        return v;
     }
+
+
 }

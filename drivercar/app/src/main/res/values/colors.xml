@@ -33,4 +33,8 @@
     <color name="orange">#FF5722</color>
     <color name="orange1">#FF6A3B</color>
 
+    <color name="mapboxWhite">#ffffff</color>
+    <color name="mapboxBlue">#4264fb</color>
+    <color name="mapboxGrayLight">#c6d2e1</color>
+
 </resources>

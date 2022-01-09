@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DriverPhoneActivity"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/toolbarRldau"
@@ -22,24 +18,23 @@
             android:background="@null"
             app:srcCompat="@drawable/ic_back" />
 
-
         <TextView
-            android:id="@+id/khancap"
+            android:id="@+id/huydonTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Khẩn cấp"
+            android:text="Huỷ đơn"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
         <ImageButton
-            android:id="@+id/call_urgent_Btn"
+            android:id="@+id/drop_order_Btn"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_below="@+id/khancap"
+            android:layout_below="@+id/huydonTv"
             android:layout_alignParentEnd="true"
             android:background="@null"
-            android:src="@drawable/ic_emergency_call" />
+            android:src="@drawable/ic_cancel" />
 
         <TextView
             android:id="@+id/nameTv"
@@ -48,13 +43,13 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginLeft="50dp"
-            android:text="Liên hệ"
+            android:text="Thông tin giao hàng"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-    </RelativeLayout>
 
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -119,33 +114,31 @@
                 android:layout_height="match_parent"
                 android:background="@color/nen"
                 android:backgroundTint="@color/itemchon"
-                android:text="Khu vực giao:"
+                android:text="Họ và tên người liên hệ:"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/AreaTv"
+                android:id="@+id/nameorderTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/shape_rect05"
                 android:padding="5dp"
                 android:paddingEnd="5dp"
-                android:text="Trong tỉnh"
+                android:text="Nguyễn Văn A"
                 android:textColor="@color/black"
                 android:textSize="19dp" />
 
 
         </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="2sp"
             android:background="@color/infoColor">
 
         </View>
-
         <LinearLayout
             android:layout_width="390dp"
             android:layout_height="wrap_content"
@@ -156,27 +149,57 @@
                 android:layout_height="wrap_content"
                 android:background="@color/nen"
                 android:backgroundTint="@color/itemchon"
-                android:text="Nhập giá tiền:"
+                android:text="Giá tiền đã báo:"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/edtNumberPrice"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:hint="3000"
-                android:inputType="number"
-                android:text="0"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_rect05"
+                android:padding="5dp"
+                android:paddingEnd="5dp"
+                android:text="200000 VND"
                 android:textColor="@color/black"
-                android:textColorHint="@android:color/black"
-                android:textSize="20dp"
-                app:met_baseColor="@color/black"
-                app:met_floatingLabel="highlight"
-                app:met_maxCharacters="20"
-                app:met_primaryColor="@android:color/black"
-                app:met_singleLineEllipsis="true" />
+                android:textSize="19dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2sp"
+            android:background="@color/infoColor">
+
+        </View>
+        <LinearLayout
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/nen"
+                android:backgroundTint="@color/itemchon"
+                android:text="Tổng tiền cần thu:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/priceTTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_rect05"
+                android:padding="5dp"
+                android:paddingEnd="5dp"
+                android:text="200000 VND"
+                android:textColor="@color/black"
+                android:textSize="19dp" />
 
         </LinearLayout>
 
@@ -188,53 +211,16 @@
         </View>
 
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_below="@+id/ll1">
-        <Button
-            android:id="@+id/ordersBtn"
-            android:layout_width="370dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="0dp"
-            android:backgroundTint="@color/DarkBlue"
-            android:drawableEnd="@drawable/ic_received"
-            android:text="Báo giá đơn hàng"
-            android:textSize="20dp" />
-        <TextView
-            android:id="@+id/quydinhTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ordersBtn"
-            android:text="Quy định:"
-            android:textColor="@color/black"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/trongtinhTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quydinhTv"
-            android:text="           Trong tỉnh: 200.000 VND"
-            android:textColor="@color/black"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/ngoaitinhtinhTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/trongtinhTv"
-            android:text="           Ngoàitỉnh: 400.000 VND"
-            android:textColor="@color/black"
-            android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/qqTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ngoaitinhtinhTv"
-            android:text="Nếu bạn ghi sai giá tiền sẽ bị chịu phạt"
-            android:textColor="@color/Red"
-            android:textSize="20dp"/>
-    </RelativeLayout>
 
+    <Button
+        android:id="@+id/oderdeliBtn"
+        android:layout_width="370dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/ll1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="@color/blueish"
+        android:drawableEnd="@drawable/ic_received"
+        android:text="Giao đơn hàng"
+        android:textSize="20dp" />
 </RelativeLayout>

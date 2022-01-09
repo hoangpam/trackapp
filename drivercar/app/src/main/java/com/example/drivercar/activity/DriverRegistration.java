@@ -84,6 +84,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -279,7 +280,6 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                     ImageURL = String.valueOf(image_uri).trim();
 
                     String timestamp = "" + System.currentTimeMillis();
-//                    DatabaseReference DanhMuc = databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("DanhMuc");
 
                     //cập nhật ảnh lên firebase storage nếu hình ảnh là null
                     if (isValid() && image_uri == null ) {
@@ -312,10 +312,8 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                         HashMap<String, String> hashMap1 = new HashMap<>();
                                         hashMap1.put("UID", "" + FAuth.getUid());
                                         hashMap1.put("MobileNo", mobile);
-
                                         hashMap1.put("FirstName", fname);
                                         hashMap1.put("LastName", lname);
-
                                         hashMap1.put("EmailId", emailid);
                                         hashMap1.put("City", cityy);
                                         hashMap1.put("Area", Area);//phường xã
@@ -339,6 +337,20 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 mDialog.dismiss();
 
+                                                HashMap<String, String> hashMap2 = new HashMap<>();
+                                                hashMap2.put("UID", "" + FAuth.getUid());
+                                                hashMap2.put("AccountType","Driver");
+                                                hashMap2.put("ID",""+timestamp);
+                                                hashMap2.put("MobileNo",""+mobile);
+                                                hashMap2.put("FirstName",""+fname);
+                                                hashMap2.put("LastName",""+lname);
+                                                databaseReference.child("Role").child("Driver").child(timestamp)
+                                                        .setValue(hashMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(@NonNull Void unused) {
+
+                                                    }
+                                                });
                                                 FAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
@@ -487,6 +499,20 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
 //                                                                                Context context = new ContextThemeWrapper(ChefRegistration.this, R.style.AppTheme2);
 //                                                                                AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.MaterialAlertDialog_rounded);
 
+                                                                                HashMap<String, String> hashMap2 = new HashMap<>();
+                                                                                hashMap2.put("UID", "" + FAuth.getUid());
+                                                                                hashMap2.put("AccountType","Driver");
+                                                                                hashMap2.put("ID",""+timestamp);
+                                                                                hashMap2.put("MobileNo",""+mobile);
+                                                                                hashMap2.put("FirstName",""+fname);
+                                                                                hashMap2.put("LastName",""+lname);
+                                                                                databaseReference.child("Role").child("Driver").child(timestamp)
+                                                                                        .setValue(hashMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                    @Override
+                                                                                    public void onSuccess(@NonNull Void unused) {
+
+                                                                                    }
+                                                                                });
                                                                                 AlertDialog.Builder builder = new AlertDialog.Builder(DriverRegistration.this);
                                                                                 builder.setMessage("\uD83E\uDD84 Bạn đã đăng ký! Đảm bảo xác minh email của bạn");
                                                                                 builder.setCancelable(false);
@@ -598,6 +624,7 @@ public class DriverRegistration extends AppCompatActivity implements LocationLis
 
     }
 
+    public static Scanner scanner = new Scanner(System.in);
 
     private void initLocation() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);

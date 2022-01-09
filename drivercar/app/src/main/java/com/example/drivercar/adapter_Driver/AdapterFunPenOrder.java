@@ -5,16 +5,17 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.drivercar.driverCarPanel.LoadingFragment;
 import com.example.drivercar.driverCar_fagment.QuotedFragment;
 
-public class AdapterFunPenOrder extends FragmentPagerAdapter {
+public class AdapterFunPenOrder extends FragmentStatePagerAdapter {
     private Context myContext;
     int totalTabs;
 
     public AdapterFunPenOrder(Context context, FragmentManager fm, int totalTabs) {
-        super(fm);
+        super(fm,totalTabs);
         myContext = context;
         this.totalTabs = totalTabs;
     }
@@ -32,7 +33,7 @@ public class AdapterFunPenOrder extends FragmentPagerAdapter {
                 return quotedFragment;
 
             default:
-                return null;
+                return new LoadingFragment();
         }
     }
     // this counts total number of tabs

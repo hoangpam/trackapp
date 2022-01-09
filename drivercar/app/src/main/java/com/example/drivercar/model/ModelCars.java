@@ -1,23 +1,25 @@
 package com.example.drivercar.model;
 
 public class ModelCars {
-    String City,CompleteAddress,Latitude,License_Plates,Longitude,SizeCar,Status,Timestamp,VehicleTonnage,VehicleTypeName,carId;
+    String City,CompleteAddress,Latitude,License_Plates,Longitude,Plate,SizeCar,Status,Timestamp,VehicleTonnage,VehicleTypeName,carId,uid;
 
     public ModelCars() {
     }
 
-    public ModelCars(String city, String completeAddress, String latitude, String license_Plates, String longitude, String sizeCar, String status, String timestamp, String vehicleTonnage, String vehicleTypeName, String carId) {
+    public ModelCars(String city, String completeAddress, String latitude, String license_Plates, String longitude, String plate, String sizeCar, String status, String timestamp, String vehicleTonnage, String vehicleTypeName, String carId, String uid) {
         City = city;
         CompleteAddress = completeAddress;
         Latitude = latitude;
         License_Plates = license_Plates;
         Longitude = longitude;
+        Plate = plate;
         SizeCar = sizeCar;
         Status = status;
         Timestamp = timestamp;
         VehicleTonnage = vehicleTonnage;
         VehicleTypeName = vehicleTypeName;
         this.carId = carId;
+        this.uid = uid;
     }
 
     public String getCity() {
@@ -58,6 +60,14 @@ public class ModelCars {
 
     public void setLongitude(String longitude) {
         Longitude = longitude;
+    }
+
+    public String getPlate() {
+        return Plate;
+    }
+
+    public void setPlate(String plate) {
+        Plate = plate;
     }
 
     public String getSizeCar() {
@@ -106,5 +116,13 @@ public class ModelCars {
 
     public void setCarId(String carId) {
         this.carId = carId;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

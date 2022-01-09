@@ -37,6 +37,7 @@ public class NewFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         Recycle_menu2 = v.findViewById(R.id.Recycle_menu2);
         loadAllCars();
+
         Recycle_menu2.setHasFixedSize(true);
         Recycle_menu2.setLayoutManager(new LinearLayoutManager(getContext()));
         Recycle_menu2.setItemAnimator(new DefaultItemAnimator());
@@ -68,6 +69,9 @@ public class NewFragment extends Fragment {
                             adapterInfomation =new AdapterInfomation(getContext(),infomationArrayList);
                             //set adapter
                             Recycle_menu2.setAdapter(adapterInfomation);
+                        }else{
+                            adapterInfomation.notifyDataSetChanged();
+                            adapterInfomation.notifyItemChanged(0);
                         }
                     }
                     @Override

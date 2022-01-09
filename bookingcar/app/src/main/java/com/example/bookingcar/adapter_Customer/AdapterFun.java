@@ -5,18 +5,19 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.bookingcar.customerCar_fagment.LoadingRunFragment;
 import com.example.bookingcar.customerCar_fagment.NewFragment;
 import com.example.bookingcar.customerCar_fagment.PassedFragment;
 
 
-public class AdapterFun extends FragmentPagerAdapter {
+public class AdapterFun extends FragmentStatePagerAdapter {
     private Context myContext;
     int totalTabs;
 
     public AdapterFun(Context context, FragmentManager fm, int totalTabs) {
-        super(fm);
+        super(fm,totalTabs);
         myContext = context;
         this.totalTabs = totalTabs;
     }

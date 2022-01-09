@@ -266,7 +266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:text="abc"/>
+                android:text="0"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/serviceSwitch1"
                 style="@style/MyCustomSwice"
@@ -288,7 +288,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:text="abc"/>
+                android:text="0"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/serviceSwitch2"
                 style="@style/MyCustomSwice"
@@ -310,7 +310,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:text="abc"/>
+                android:text="0"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/serviceSwitch3"
                 style="@style/MyCustomSwice"
@@ -332,7 +332,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:text="abc"/>
+                android:text="0"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/serviceSwitch4"
                 style="@style/MyCustomSwice"
@@ -354,7 +354,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                android:text="abc"/>
+                android:text="0"/>
 
             <Button
                 android:id="@+id/postUpBTN"
@@ -364,6 +364,44 @@
                 android:text="Đăng "
                 android:layout_gravity="center"
                 android:backgroundTint="@color/green"></Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+
+                android:text="Bảng giá vận chuyển(Tham Khảo):"
+                android:textColor="@color/Black"
+                android:textSize="18dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+
+                android:text="    Ngoại tỉnh: 2.000.000vnđ"
+                android:textColor="@color/Black"
+                android:textSize="18dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+
+                android:text="    Trong tỉnh: 1.000.000vnđ"
+                android:textColor="@color/Black"
+                android:textSize="18dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+
+                android:text="Bảng giá dịch vụ(Tham Khảo):
+                                                1.Đóng gói: 100.000vnđ
+                                                2.Khiêng hàng: 300.000vnđ
+                                                3.Vệ sinh: 400.000vnđ
+                                                4.Bảo hiểm hàng hóa: 600.000vnđ
+                                                5.Trọn gói: 1.000.000vnđ"
+                android:textColor="@color/Black"
+                android:textSize="18dp" />
+
         </LinearLayout>
 
     </ScrollView>

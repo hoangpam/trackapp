@@ -35,7 +35,7 @@ public class DriverPhoneActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         loadCustomer();
         callBtn = findViewById(R.id.callBtn);
-        receorder = findViewById(R.id.receorder);
+
 
         callBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +44,7 @@ public class DriverPhoneActivity extends AppCompatActivity {
             }
         });
 
-        receorder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
     }
 
     private void loadCustomer(){

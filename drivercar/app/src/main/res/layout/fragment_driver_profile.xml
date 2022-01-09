@@ -51,7 +51,7 @@
                             android:background="@drawable/shape_rect06"
                             android:text="Bị từ chối"
                             android:textColor="@color/black"
-                            android:textSize="10dp" />
+                            android:textSize="20dp" />
 
 
                         <TextView

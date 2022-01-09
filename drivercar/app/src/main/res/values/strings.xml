@@ -20,7 +20,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <integer name="animation_duration_medium">3000</integer>
     <!--        google map-->
-    <string name="map_api_key">AIzaSyBauAEFD9_PC4-5x9YnZK3I6BAb2aopTrU</string>
+    <string name="map_api_key">AIzaSyD7JJgkcwBr9f2Pi1nJfISgVWpk8Eulupg</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYmFwcGFtIiwiYSI6ImNreTYxcWpmYjByZngycnBxbTM0MTBzOWMifQ.vF9P-m4l_ZKT5ME5JqGE5w</string>
     <string name="facebook_app_id">225615526044748</string>
     <string name="fb_login_protocol_scheme">fb225615526044748</string>
     <string name="ban">Đang hoàn thiện chức năng </string>

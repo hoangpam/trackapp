@@ -228,13 +228,21 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         chipNgoaiThanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                chipNgoaiThanh.setTextColor(getResources().getColor(R.color.colorPrimary));
+                chipNgoaiThanh.setBackground(getResources().getDrawable(R.drawable.shape_rect04));
                 textchip.setText("2000000");
+                chipNoiThanh.setTextColor(getResources().getColor(R.color.black));
+                chipNoiThanh.setBackground(getResources().getDrawable(R.color.orange1));
             }
         });
 
         chipNoiThanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                chipNoiThanh.setTextColor(getResources().getColor(R.color.colorPrimary));
+                chipNoiThanh.setBackground(getResources().getDrawable(R.drawable.shape_rect04));
+                chipNgoaiThanh.setTextColor(getResources().getColor(R.color.black));
+                chipNgoaiThanh.setBackground(getResources().getDrawable(R.color.orange1));
                 textchip.setText("1000000");
             }
         });
@@ -245,6 +253,7 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
                 if(b)
                 {
                     serviceTv.setText("100000");
+
                 }else{
                     serviceTv.setText("0");
                 }
@@ -483,11 +492,20 @@ public class CutomerTrackFragment extends Fragment implements LocationListener {
         NameCarTET.setText("'");
         RankingTimeTET.setText("");
         textchip.setText("");
-        serviceTv.setText("");
-        service1Tv.setText("");
-        service2Tv.setText("");
-        service3Tv.setText("");
-        service4Tv.setText("");
+        serviceTv.setText("0");
+        service1Tv.setText("0");
+        service2Tv.setText("0");
+        service3Tv.setText("0");
+        service4Tv.setText("0");
+        chipNoiThanh.setTextColor(getResources().getColor(R.color.black));
+        chipNoiThanh.setBackground(getResources().getDrawable(R.color.orange1));
+        chipNgoaiThanh.setTextColor(getResources().getColor(R.color.black));
+        chipNgoaiThanh.setBackground(getResources().getDrawable(R.color.orange1));
+        serviceSwitch.setChecked(false);
+        serviceSwitch1.setChecked(false);
+        serviceSwitch2.setChecked(false);
+        serviceSwitch3.setChecked(false);
+        serviceSwitch4.setChecked(false);
 
     }
 

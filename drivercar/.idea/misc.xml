@@ -50,11 +50,12 @@
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/drawable/shape_circle03.xml" value="0.21944444444444444" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/drawable/shape_rect0011.xml" value="0.21944444444444444" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/drawable/shape_rect06.xml" value="0.21944444444444444" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/drawable/shape_rect07.xml" value="0.14322916666666666" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_add_product.xml" value="0.2513586956521739" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_infomation.xml" value="0.24864130434782608" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_infomation2.xml" value="0.2" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_panel__bottom_navigation.xml" value="0.176" />
-        <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_phone.xml" value="0.1265625" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_phone.xml" value="0.35645933014354064" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_registration.xml" value="0.4" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driver_verify_phone.xml" value="0.3723958333333333" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_driverlogin.xml" value="0.176" />
@@ -63,11 +64,13 @@
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_edit_info.xml" value="0.25181159420289856" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_edit_product.xml" value="0.2513586956521739" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_google_map.xml" value="0.176" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_infomation.xml" value="0.25271739130434784" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_infomation_license.xml" value="0.24864130434782608" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_main.xml" value="0.221875" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_main_menu.xml" value="0.264" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/activity_test.xml" value="0.13802083333333334" />
+        <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/bs_detail_comple_order.xml" value="0.2726449275362319" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/bs_product_details_driver.xml" value="0.264" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/dialog_car_registration.xml" value="0.25271739130434784" />
         <entry key="..\:/codekiemtien/yeucau/bailam/drivercar/app/src/main/res/layout/dialog_quantity.xml" value="0.23958333333333334" />

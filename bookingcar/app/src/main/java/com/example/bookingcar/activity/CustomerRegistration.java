@@ -82,6 +82,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -321,6 +322,22 @@ public class CustomerRegistration extends AppCompatActivity implements LocationL
                                                     public void onComplete(@NonNull Task<Void> task) {
 
                                                         if(task.isSuccessful()){
+
+                                                            HashMap<String, String> hashMap2 = new HashMap<>();
+                                                            hashMap2.put("UID", "" + FAuth.getUid());
+                                                            hashMap2.put("AccountType","Customer");
+                                                            hashMap2.put("ID",""+timestamp);
+                                                            hashMap2.put("MobileNo",""+mobile);
+                                                            hashMap2.put("FirstName",""+fname);
+                                                            hashMap2.put("LastName",""+lname);
+                                                            databaseReference.child("Role").child("Customer")
+                                                                    .child(timestamp)
+                                                                    .setValue(hashMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(@NonNull Void unused) {
+
+                                                                }
+                                                            });
                                                             AlertDialog.Builder builder = new AlertDialog.Builder(CustomerRegistration.this);
                                                             builder.setMessage("\uD83D\uDC37 Bạn đã đăng ký! Đảm bảo xác minh Email của bạn");
                                                             builder.setCancelable(false);
@@ -431,6 +448,21 @@ public class CustomerRegistration extends AppCompatActivity implements LocationL
 //                                                                                Context context = new ContextThemeWrapper(Registration.this, R.style.AppTheme2);
 //                                                                                AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.MaterialAlertDialog_rounded);
 
+                                                                                HashMap<String, String> hashMap2 = new HashMap<>();
+                                                                                hashMap2.put("UID", "" + FAuth.getUid());
+                                                                                hashMap2.put("AccountType","Customer");
+                                                                                hashMap2.put("ID",""+timestamp);
+                                                                                hashMap2.put("MobileNo",""+mobile);
+                                                                                hashMap2.put("FirstName",""+fname);
+                                                                                hashMap2.put("LastName",""+lname);
+                                                                                databaseReference.child("Role").child("Customer")
+                                                                                        .child(timestamp)
+                                                                                        .setValue(hashMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                    @Override
+                                                                                    public void onSuccess(@NonNull Void unused) {
+
+                                                                                    }
+                                                                                });
                                                                                 AlertDialog.Builder builder = new AlertDialog.Builder(CustomerRegistration.this);
                                                                                 builder.setMessage("\uD83D\uDC37 \n Bạn đã đăng ký! Đảm bảo xác minh Email của bạn");
                                                                                 builder.setCancelable(false);
